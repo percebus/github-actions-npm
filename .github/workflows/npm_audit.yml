@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: percebus/github-reusable-workflows/.github/actions/checkout@main
       - uses: percebus/github-reusable-workflows-node/.github/actions/node_setup@main
-      - uses: percebus/github-reusable-workflows-node-npm/.github/actions/npm_install@main
+      - uses: .github/actions/npm_install@main
 
       - name: npm audit
         run: npm audit
