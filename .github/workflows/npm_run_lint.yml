@@ -1,0 +1,17 @@
+name: Lint
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  push:
+
+jobs:
+  npm_run_lint:
+    name: npm run lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: percebus/github-reusable-workflows/.github/actions/checkout@main
+      - uses: percebus/github-reusable-workflows-node/.github/actions/node_setup@main
+      - uses: percebus/github-reusable-workflows-node-npm/.github/actions/npm_install@main
+
+      - name: npm run lint
+        run: npm run lint
