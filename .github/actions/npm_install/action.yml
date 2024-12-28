@@ -1,7 +1,7 @@
 name: npm install
 description: npm install
 inputs:
-  ls_opts:
+  ls_options:
     description: ls options
     required: false
     # in windows, la does NOT work
@@ -20,4 +20,4 @@ runs:
 
     - name: ls
       shell: bash
-      run: ls ${{ inputs.ls_opts }} ./node_modules
+      run: ls ${{ inputs.ls_options }} ./node_modules
