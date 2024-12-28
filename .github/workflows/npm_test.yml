@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: percebus/github-reusable-workflows/.github/actions/checkout@main
       - uses: percebus/github-reusable-workflows-node/.github/actions/node_setup@main
-      - uses: ./npm_install
+      - uses: ./github/actions/npm_install
 
       - name: npm run lint
         run: npm run lint --if-present
