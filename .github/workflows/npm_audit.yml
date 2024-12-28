@@ -1,0 +1,19 @@
+name: Dependency Audit
+on:
+  push:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  # NOTE: is this job redundant?
+  # does dependency-review-action accomplish the same, and more?
+  npm_audit:
+    name: npm audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: percebus/github-reusable-workflows/.github/actions/checkout@main
+      - uses: percebus/github-reusable-workflows-node/.github/actions/node_setup@main
+      - uses: ./.github/actions/npm_install
+
+      - name: npm audit
+        run: npm audit
+        continue-on-error: true
