@@ -1,8 +1,7 @@
 name: Lint
 on:
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
   push:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
 jobs:
   npm_run_lint:
