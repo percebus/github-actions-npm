@@ -8,8 +8,8 @@ jobs:
     name: npm run lint
     runs-on: ubuntu-latest
     steps:
-      - uses: percebus/github-reusable-workflows/.github/actions/checkout@main
-      - uses: percebus/github-reusable-workflows-node/.github/actions/node_setup@main
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: percebus/github-actions-node/.github/actions/node_setup@main
       - uses: ./.github/actions/npm_install
 
       - name: npm run lint
