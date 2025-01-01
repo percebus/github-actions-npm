@@ -14,4 +14,4 @@ jobs:
     uses: percebus/github-actions-common/.github/workflows/dependency-review.yml@main
 
   npm_audit:
-    uses: .github/workflows/npm_audit.yml
+    uses: ./.github/workflows/npm_audit.yml
