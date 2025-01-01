@@ -1,4 +1,4 @@
-name: Pull Request
+name: Dependencies Review & Audit
 
 on:
   # "This run was triggered by the "push" event, which is unsupported.
