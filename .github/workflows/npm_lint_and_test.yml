@@ -1,4 +1,4 @@
-name: npm test
+name: npm lint & test
 on:
   push:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
