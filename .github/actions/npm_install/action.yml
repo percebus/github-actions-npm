@@ -10,9 +10,9 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: npm run setup
+    - name: npm run setup:ci
       shell: bash
-      run: npm run setup --if-present
+      run: npm run setup:ci --if-present
 
     - name: npm install
       shell: bash
