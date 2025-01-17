@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
-      - uses: ./.github/actions/npm_install
+      - uses: percebus/github-actions-npm/.github/actions/npm_install@main
 
       - name: npm run lint
         run: npm run lint
