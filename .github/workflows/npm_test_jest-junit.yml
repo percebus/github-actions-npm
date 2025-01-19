@@ -1,4 +1,4 @@
-name: jest-junit
+name: "npm test > jest-junit"
 on:
   push:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
