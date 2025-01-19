@@ -1,8 +1,20 @@
 name: npm test
 on:
   push:
-  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+    inputs:
+      files_pattern:
+        type: string
+        description: The pattern to match the test result files. i.e. 'junit.xml'
+        required: false
+        default: ''
+
+      test-reporter_name:
+        type: string
+        description: The name of the test reporter.
+        required: false
+        default: Unit Tests
 
 jobs:
   npm_test:
@@ -15,3 +27,10 @@ jobs:
 
       - name: npm test
         run: npm test
+
+      - uses: percebus/github-actions-testing/.github/actions/test-reporter@main
+        if: ${{ inputs.files_pattern }} == 'junit.xml'
+        with:
+          name: ${{ inputs.test-reporter_name }}
+          reporter: jest-junit
+          files_pattern: ${{ inputs.files_pattern }}
