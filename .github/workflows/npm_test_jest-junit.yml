@@ -1,0 +1,29 @@
+name: jest-junit
+on:
+  push:
+  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  npm_test:
+    name: npm test
+    runs-on: ubuntu-latest
+
+    # SRC: https://github.com/dorny/test-reporter?tab=readme-ov-file#recommended-setup-for-public-repositories
+    permissions:
+      contents: read
+      actions: read
+      checks: write
+
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: percebus/github-actions-npm/.github/actions/npm_install@main
+
+      - name: npm test
+        run: npm test
+      - uses: percebus/github-actions-testing/.github/actions/test-reporter@main
+        with:
+          name: Unit Tests
+          reporter: jest-junit
+          files_pattern: junit.xml
