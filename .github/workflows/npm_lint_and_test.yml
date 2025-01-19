@@ -1,8 +1,16 @@
 name: npm lint & test
 on:
   push:
-  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+    inputs:
+      npm_test_cli_opts:
+        type: string
+        description: The CLI options to pass to the npm test command.
+        required: false
+        # Makes it skip linting,
+        # if you have "pretest: 'npm run lint'"
+        default: '--ignore-scripts'
 
 jobs:
   npm_test:
@@ -17,4 +25,4 @@ jobs:
         run: npm run lint
 
       - name: npm test
-        run: npm test --ignore-scripts
+        run: npm test ${{ inputs.npm_test_cli_opts }}
