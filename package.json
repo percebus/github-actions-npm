@@ -7,11 +7,15 @@
     "prettier": "prettier .",
     "prettier:write": "npm run prettier -- --write",
     "prettier:check": "npm run prettier -- --check",
+    "jest:ci": "jest --ci",
+    "jest:ci:unit": "npm run jest:ci -- unit.spec.js",
     "lint": "npm run prettier:check",
     "style": "npm run prettier:write",
     "poststyle": "npm run lint",
     "pretest": "npm run lint",
-    "test": "exit 0"
+    "test": "npm run jest:ci:unit",
+    "predev": "npm run style",
+    "dev": "npm run test"
   },
   "repository": {
     "type": "git",
@@ -29,6 +33,8 @@
   },
   "homepage": "https://github.com/percebus/github-actions-npm#readme",
   "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-junit": "^16.0.0",
     "prettier": "^3.4.2"
   }
 }
