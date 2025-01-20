@@ -10,7 +10,7 @@ on:
         required: false
         # Makes it skip linting,
         # if you have "pretest: 'npm run lint'"
-        default: '--ignore-scripts'
+        default: "--ignore-scripts"
 
 jobs:
   npm_test:
