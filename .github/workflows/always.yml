@@ -1,0 +1,22 @@
+name: "[C]ontinuous [I]ntegration"
+on:
+  push:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+# SRC: https://github.com/EnricoMi/publish-unit-test-result-action?tab=readme-ov-file#permissions
+# SRC: https://github.com/dorny/test-reporter?tab=readme-ov-file#recommended-setup-for-public-repositories
+permissions:
+  contents: read
+  actions: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  npm_test:
+    name: npm test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: ./.github/actions/npm_install
+      - uses: ./.github/actions/npm_test_junit

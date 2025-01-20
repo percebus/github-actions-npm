@@ -1,9 +1,15 @@
 name: npm test
 on:
-  push:
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
+      npm_test_cli_opts:
+        type: string
+        description: The CLI options to pass to the npm test command.
+        required: false
+        # Makes it skip linting,
+        # if you have "pretest: 'npm run lint'"
+        default: "--ignore-scripts"
+
       files_pattern:
         type: string
         description: The pattern to match the test result files. i.e. 'junit.xml'
@@ -18,7 +24,7 @@ on:
 
       tests_name:
         type: string
-        description: The name of the test reporter.
+        description: The name of the tests.
         required: false
         default: Unit Tests
 
@@ -34,6 +40,14 @@ on:
         required: false
         default: Publish Test Deltas
 
+# SRC: https://github.com/EnricoMi/publish-unit-test-result-action?tab=readme-ov-file#permissions
+# SRC: https://github.com/dorny/test-reporter?tab=readme-ov-file#recommended-setup-for-public-repositories
+permissions:
+  contents: read
+  actions: read
+  checks: write
+  pull-requests: write
+
 jobs:
   npm_test:
     name: npm test
@@ -43,8 +57,11 @@ jobs:
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
       - uses: percebus/github-actions-npm/.github/actions/npm_install@main
 
+      - name: npm run lint
+        run: npm run lint --if-present
+
       - name: npm test
-        run: npm test
+        run: npm test ${{ inputs.npm_test_cli_opts }}
 
       - uses: percebus/github-actions-testing/.github/actions/test-reporter@main
         if: ${{ inputs.files_pattern }} == 'junit.xml'
