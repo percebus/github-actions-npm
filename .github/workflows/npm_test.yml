@@ -106,6 +106,7 @@ jobs:
       - uses: percebus/github-actions-testing/.github/actions/junit@main
         if: ${{ inputs.files_pattern }} == 'junit.xml'
         with:
+          runs-on: ubuntu-latest
           reporter: ${{ inputs.reporter }}
           tests_name: ${{ inputs.tests_name }}
           files_pattern: ${{ inputs.files_pattern }}
