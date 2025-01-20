@@ -104,21 +104,21 @@ jobs:
         run: npm test ${{ inputs.npm_test_cli_opts }}
 
       - uses: percebus/github-actions-testing/.github/actions/test-reporter@main
-        if: ${{ inputs.files_pattern == "junit.xml" }}
+        if: ${{ inputs.files_pattern }} == 'junit.xml'
         with:
           name: ${{ inputs.tests_name }}
           reporter: ${{ inputs.reporter }}
           files_pattern: ${{ inputs.files_pattern }}
 
       - uses: percebus/github-actions-testing/.github/actions/test-summary@main
-        if: ${{ inputs.files_pattern == "junit.xml" }}
+        if: ${{ inputs.files_pattern }} == 'junit.xml'
         with:
           name: ${{ inputs.tests_name }}
           title: ${{ inputs.summary_title }}
           files_pattern: ${{ inputs.files_pattern }}
 
       - uses: percebus/github-actions-testing/.github/actions/publish-test-deltas@main
-        if: ${{ inputs.files_pattern == "junit.xml" }}
+        if: ${{ inputs.files_pattern }} == 'junit.xml'
         with:
           name: ${{ inputs.publish_step_name }}
           runs-on: ubuntu-latest
