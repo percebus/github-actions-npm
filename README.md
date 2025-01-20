@@ -14,4 +14,4 @@
 
 #### pull_request
 
-- [![Dependencies Review & Audit](https://github.com/percebus/github-actions-npm/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/dependency-review.yml)
+- [![Dependencies Review & Audit](https://github.com/percebus/github-actions-npm/actions/workflows/dependency-review.yml/badge.svg?event=pull_request)](https://github.com/percebus/github-actions-npm/actions/workflows/dependency-review.yml)
