@@ -18,7 +18,7 @@ on:
 
       tests_name:
         type: string
-        description: The name of the test reporter.
+        description: The name of the tests.
         required: false
         default: Unit Tests
 
