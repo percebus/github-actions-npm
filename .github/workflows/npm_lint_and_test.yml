@@ -1,3 +1,4 @@
+# XXX use npm_test
 name: npm lint & test
 on:
   push:

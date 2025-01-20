@@ -2,6 +2,14 @@ name: npm test
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
+      npm_test_cli_opts:
+        type: string
+        description: The CLI options to pass to the npm test command.
+        required: false
+        # Makes it skip linting,
+        # if you have "pretest: 'npm run lint'"
+        default: "--ignore-scripts"
+
       files_pattern:
         type: string
         description: The pattern to match the test result files. i.e. 'junit.xml'
@@ -49,8 +57,11 @@ jobs:
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
       - uses: percebus/github-actions-npm/.github/actions/npm_install@main
 
+      - name: npm run lint
+        run: npm run lint --if-present
+
       - name: npm test
-        run: npm test
+        run: npm test ${{ inputs.npm_test_cli_opts }}
 
       - uses: percebus/github-actions-testing/.github/actions/test-reporter@main
         if: ${{ inputs.files_pattern }} == 'junit.xml'
