@@ -1,5 +1,45 @@
 name: npm test
 on:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+    inputs:
+      npm_test_cli_opts:
+        type: string
+        description: The CLI options to pass to the npm test command.
+        required: false
+        # Makes it skip linting,
+        # if you have "pretest: 'npm run lint'"
+        default: --ignore-scripts
+
+      files_pattern:
+        type: string
+        description: The pattern to match the test result files. i.e. 'junit.xml'
+        required: false
+        default: junit.xml
+
+      reporter:
+        type: string
+        description: The test reporter to use.
+        required: false
+        default: jest-junit
+
+      tests_name:
+        type: string
+        description: The name of the tests.
+        required: false
+        default: Unit Tests
+
+      summary_title:
+        type: string
+        description: The title of the test summary.
+        required: false
+        default: Unit Tests Summary
+
+      publish_step_name:
+        type: string
+        description: The name of the publish step.
+        required: false
+        default: Publish Test Deltas
+
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
       npm_test_cli_opts:
@@ -8,7 +48,7 @@ on:
         required: false
         # Makes it skip linting,
         # if you have "pretest: 'npm run lint'"
-        default: "--ignore-scripts"
+        default: --ignore-scripts
 
       files_pattern:
         type: string
@@ -63,23 +103,11 @@ jobs:
       - name: npm test
         run: npm test ${{ inputs.npm_test_cli_opts }}
 
-      - uses: percebus/github-actions-testing/.github/actions/test-reporter@main
+      - uses: percebus/github-actions-testing/.github/actions/junit@main
         if: ${{ inputs.files_pattern }} == 'junit.xml'
         with:
-          name: ${{ inputs.tests_name }}
           reporter: ${{ inputs.reporter }}
+          tests_name: ${{ inputs.tests_name }}
           files_pattern: ${{ inputs.files_pattern }}
-
-      - uses: percebus/github-actions-testing/.github/actions/test-summary@main
-        if: ${{ inputs.files_pattern }} == 'junit.xml'
-        with:
-          name: ${{ inputs.tests_name }}
-          title: ${{ inputs.summary_title }}
-          files_pattern: ${{ inputs.files_pattern }}
-
-      - uses: percebus/github-actions-testing/.github/actions/publish-test-deltas@main
-        if: ${{ inputs.files_pattern }} == 'junit.xml'
-        with:
-          name: ${{ inputs.publish_step_name }}
-          runs-on: ubuntu-latest
-          files_pattern: ${{ inputs.files_pattern }}
+          summary_title: ${{ inputs.summary_title }}
+          publish_step_name: ${{ inputs.publish_step_name }}
