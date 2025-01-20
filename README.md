@@ -2,9 +2,12 @@
 
 [`LICENSE`](./LICENSE.md)
 
-[![[C]ontinuous [I]ntegration](https://github.com/percebus/github-actions-npm/actions/workflows/always.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/always.yml)
-
 ## Workflows
+
+### [C]ontinuous [I]ntegration
+
+- [![[C]ontinuous [I]ntegration](https://github.com/percebus/github-actions-npm/actions/workflows/always.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/always.yml)
+- [![actions/npm_install](https://github.com/percebus/github-actions-npm/actions/workflows/action_npm_install.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/action_npm_install.yml)
 
 ### Re-usable
 
