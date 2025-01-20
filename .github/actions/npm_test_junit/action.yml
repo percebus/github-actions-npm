@@ -1,15 +1,15 @@
 name: npm test
 description: npm test
 inputs:
-  files_pattern:
-    description: The pattern to match the test result files. i.e. 'junit.xml'
-    required: false
-    default: ""
-
   reporter:
     description: The test reporter to use.
     required: false
     default: jest-junit
+
+  files_pattern:
+    description: The pattern to match the test result files. i.e. 'junit.xml'
+    required: false
+    default: junit.xml
 
   tests_name:
     description: The name of the tests.
