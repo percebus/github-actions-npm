@@ -1,0 +1,13 @@
+name: actions/npm_install
+on:
+  push:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  npm_install:
+    name: npm install
+    runs-on: ubuntu-latest
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: ./.github/actions/npm_install
