@@ -1,0 +1,52 @@
+name: npm test
+description: npm test
+inputs:
+  files_pattern:
+    description: The pattern to match the test result files. i.e. 'junit.xml'
+    required: false
+    default: ""
+
+  reporter:
+    description: The test reporter to use.
+    required: false
+    default: jest-junit
+
+  tests_name:
+    description: The name of the tests.
+    required: false
+    default: Unit Tests
+
+  summary_title:
+    description: The title of the test summary.
+    required: false
+    default: Unit Tests Summary
+
+  publish_step_name:
+    description: The name of the publish step.
+    required: false
+    default: Publish Test Deltas
+
+runs:
+  using: composite
+  steps:
+    - name: npm test
+      shell: bash
+      run: npm test
+
+    - uses: percebus/github-actions-testing/.github/actions/test-reporter@main
+      with:
+        name: ${{ inputs.tests_name }}
+        reporter: ${{ inputs.reporter }}
+        files_pattern: ${{ inputs.files_pattern }}
+
+    - uses: percebus/github-actions-testing/.github/actions/test-summary@main
+      with:
+        name: ${{ inputs.tests_name }}
+        title: ${{ inputs.summary_title }}
+        files_pattern: ${{ inputs.files_pattern }}
+
+    - uses: percebus/github-actions-testing/.github/actions/publish-test-deltas@main
+      with:
+        name: ${{ inputs.publish_step_name }}
+        runs-on: ubuntu-latest
+        files_pattern: ${{ inputs.files_pattern }}

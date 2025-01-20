@@ -1,7 +1,5 @@
 name: npm test
 on:
-  push:
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
       files_pattern:
@@ -49,8 +47,7 @@ jobs:
       - uses: percebus/github-actions-testing/.github/actions/test-reporter@main
         if: ${{ inputs.files_pattern }} == 'junit.xml'
         with:
-          # name: ${{ inputs.tests_name }} # FIXME
-          name: bananas
+          name: ${{ inputs.tests_name }}
           reporter: ${{ inputs.reporter }}
           files_pattern: ${{ inputs.files_pattern }}
 
