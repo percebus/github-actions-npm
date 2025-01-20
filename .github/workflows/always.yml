@@ -20,7 +20,10 @@ jobs:
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
       - uses: ./.github/actions/npm_install
 
+      - name: npm run lint
+        run: npm  run lint
+
       - name: npm test
-        run: npm test
+        run: npm test --ignore-scripts
 
       - uses: percebus/github-actions-testing/.github/actions/junit@main
