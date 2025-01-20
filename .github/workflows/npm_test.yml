@@ -49,7 +49,8 @@ jobs:
       - uses: percebus/github-actions-testing/.github/actions/test-reporter@main
         if: ${{ inputs.files_pattern }} == 'junit.xml'
         with:
-          name: ${{ inputs.tests_name }}
+          # name: ${{ inputs.tests_name }} # FIXME
+          name: bananas
           reporter: ${{ inputs.reporter }}
           files_pattern: ${{ inputs.files_pattern }}
 
