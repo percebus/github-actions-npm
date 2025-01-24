@@ -7,17 +7,25 @@ inputs:
     # in windows, la does NOT work
     default: "-la"
 
+  working-directory:
+    description: working-directory
+    required: false
+    default: "."
+
 runs:
   using: composite
   steps:
     - name: npm run setup:ci
+      working-directory: ${{ inputs.working-directory }}
       shell: bash
       run: npm run setup:ci --if-present
 
     - name: npm install
+      working-directory: ${{ inputs.working-directory }}
       shell: bash
-      run: npm ci
+      run: npm clean-install
 
     - name: ls
+      working-directory: ${{ inputs.working-directory }}
       shell: bash
       run: ls ${{ inputs.ls_options }} ./node_modules
