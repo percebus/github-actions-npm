@@ -2,6 +2,12 @@ name: npm test
 on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
     inputs:
+      working-directory:
+        type: string
+        description: working-directory
+        required: false
+        default: "."
+
       files_pattern:
         type: string
         description: The pattern to match the test result files. i.e. 'junit.xml'
@@ -80,6 +86,8 @@ jobs:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
       - uses: percebus/github-actions-npm/.github/actions/npm_install@main
+        with:
+          working-directory: ${{ inputs.working-directory }}
 
       - name: npm test
         run: npm test

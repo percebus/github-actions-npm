@@ -15,6 +15,10 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: ls
+      shell: bash
+      run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}
+
     - name: npm run setup:ci
       shell: bash
       run: npm run setup:ci --prefix ${{ inputs.working-directory }} --if-present
@@ -23,6 +27,6 @@ runs:
       shell: bash
       run: npm clean-install --prefix ${{ inputs.working-directory }}
 
-    - name: ls
+    - name: ls ./node_modules
       shell: bash
       run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}/node_modules
