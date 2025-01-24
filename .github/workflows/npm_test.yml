@@ -117,3 +117,5 @@ jobs:
           tests_name: ${{ inputs.tests_name }}
           files_pattern: ${{ inputs.files_pattern }}
           summary_title: ${{ inputs.summary_title }}
+          list-suites: ${{ inputs.list-suites }}
+          list-tests: ${{ inputs.list-tests }}
