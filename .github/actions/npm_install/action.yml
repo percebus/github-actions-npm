@@ -17,16 +17,20 @@ runs:
   steps:
     - name: ls
       shell: bash
-      run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}
+      working-directory: ${{ inputs.working-directory }}
+      run: ls ${{ inputs.ls_options }} .
 
     - name: npm run setup:ci
       shell: bash
-      run: npm run setup:ci --prefix ${{ inputs.working-directory }} --if-present
+      working-directory: ${{ inputs.working-directory }}
+      run: npm run setup:ci  --if-present
 
     - name: npm install
       shell: bash
-      run: npm clean-install --prefix ${{ inputs.working-directory }}
+      working-directory: ${{ inputs.working-directory }}
+      run: npm clean-install .
 
     - name: ls ./node_modules
       shell: bash
-      run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}/node_modules
+      working-directory: ${{ inputs.working-directory }}
+      run: ls ${{ inputs.ls_options }} ./node_modules
