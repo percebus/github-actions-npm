@@ -23,12 +23,11 @@ runs:
     - name: npm run setup:ci
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: npm run setup:ci  --if-present
+      run: npm run setup:ci --if-present
 
     - name: npm install
       shell: bash
-      working-directory: ${{ inputs.working-directory }}
-      run: npm clean-install
+      run: npm clean-install --prefix ${{ inputs.working-directory }}
 
     - name: ls ./node_modules
       shell: bash
