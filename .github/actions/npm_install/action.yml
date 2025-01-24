@@ -26,6 +26,5 @@ runs:
       run: npm clean-install
 
     - name: ls
-      working-directory: ${{ inputs.working-directory }}
       shell: bash
-      run: ls ${{ inputs.ls_options }} ./node_modules
+      run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}/node_modules
