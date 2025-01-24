@@ -40,6 +40,12 @@ on:
 
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
+      working-directory:
+        type: string
+        description: working-directory
+        required: false
+        default: "."
+
       files_pattern:
         type: string
         description: The pattern to match the test result files. i.e. 'junit.xml'
