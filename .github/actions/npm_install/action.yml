@@ -16,14 +16,12 @@ runs:
   using: composite
   steps:
     - name: npm run setup:ci
-      working-directory: ${{ inputs.working-directory }}
       shell: bash
-      run: npm run setup:ci --if-present
+      run: npm run setup:ci --prefix ${{ inputs.working-directory }} --if-present
 
     - name: npm install
-      working-directory: ${{ inputs.working-directory }}
       shell: bash
-      run: npm clean-install
+      run: npm clean-install --prefix ${{ inputs.working-directory }}
 
     - name: ls
       shell: bash
