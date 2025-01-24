@@ -28,7 +28,7 @@ runs:
     - name: npm install
       shell: bash
       working-directory: ${{ inputs.working-directory }}
-      run: npm clean-install .
+      run: npm clean-install
 
     - name: ls ./node_modules
       shell: bash
