@@ -2,6 +2,12 @@ name: npm test
 on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
     inputs:
+      reporter:
+        type: string
+        description: The test reporter to use.
+        required: false
+        default: ''
+
       working-directory:
         type: string
         description: working-directory
@@ -13,12 +19,6 @@ on:
         description: The pattern to match the test result files. i.e. 'junit.xml'
         required: false
         default: junit.xml
-
-      reporter:
-        type: string
-        description: The test reporter to use.
-        required: false
-        default: ''
 
       tests_name:
         type: string
@@ -40,6 +40,12 @@ on:
 
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
+      reporter:
+        type: string
+        description: The test reporter to use.
+        required: false
+        default: ''
+
       working-directory:
         type: string
         description: working-directory
@@ -51,12 +57,6 @@ on:
         description: The pattern to match the test result files. i.e. 'junit.xml'
         required: false
         default: ""
-
-      reporter:
-        type: string
-        description: The test reporter to use.
-        required: false
-        default: ''
 
       tests_name:
         type: string
