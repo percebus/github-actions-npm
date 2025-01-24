@@ -6,7 +6,7 @@ on:
         type: string
         description: The test reporter to use.
         required: false
-        default: ''
+        default: ""
 
       working-directory:
         type: string
@@ -32,13 +32,24 @@ on:
         required: false
         default: Unit Tests Summary
 
+      list-suites:
+        description: Limits which test suites are listed
+        required: false
+        default: all
+
+      list-tests:
+        type: string
+        description: Limits which test cases are listed
+        required: false
+        default: failed
+
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
       reporter:
         type: string
         description: The test reporter to use.
         required: false
-        default: ''
+        default: ""
 
       working-directory:
         type: string
@@ -63,6 +74,18 @@ on:
         description: The title of the test summary.
         required: false
         default: Unit Tests Summary
+
+      list-suites:
+        type: string
+        description: Limits which test suites are listed
+        required: false
+        default: all
+
+      list-tests:
+        type: string
+        description: Limits which test cases are listed
+        required: false
+        default: failed
 
 # SRC: https://github.com/EnricoMi/publish-unit-test-result-action?tab=readme-ov-file#permissions
 # SRC: https://github.com/dorny/test-reporter?tab=readme-ov-file#recommended-setup-for-public-repositories
