@@ -32,12 +32,6 @@ on:
         required: false
         default: Unit Tests Summary
 
-      publish_step_name:
-        type: string
-        description: The name of the publish step.
-        required: false
-        default: Publish Test Deltas
-
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
       reporter:
@@ -69,12 +63,6 @@ on:
         description: The title of the test summary.
         required: false
         default: Unit Tests Summary
-
-      publish_step_name:
-        type: string
-        description: The name of the publish step.
-        required: false
-        default: Publish Test Deltas
 
 # SRC: https://github.com/EnricoMi/publish-unit-test-result-action?tab=readme-ov-file#permissions
 # SRC: https://github.com/dorny/test-reporter?tab=readme-ov-file#recommended-setup-for-public-repositories
