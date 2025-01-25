@@ -17,8 +17,7 @@ runs:
   steps:
     - name: ls
       shell: bash
-      working-directory: ${{ inputs.working-directory }}
-      run: ls ${{ inputs.ls_options }} .
+      run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}
 
     - name: npm run setup:ci
       shell: bash
@@ -31,5 +30,4 @@ runs:
 
     - name: ls ./node_modules
       shell: bash
-      working-directory: ${{ inputs.working-directory }}
-      run: ls ${{ inputs.ls_options }} ./node_modules
+      run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}/node_modules
