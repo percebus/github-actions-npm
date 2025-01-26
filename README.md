@@ -15,8 +15,9 @@
 #### Re-usable
 
 - [![npm audit](https://github.com/percebus/github-actions-npm/actions/workflows/npm_audit.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/npm_audit.yml)
-- [![npm run lint](https://github.com/percebus/github-actions-npm/actions/workflows/npm_run_lint.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/npm_run_lint.yml)
+- [![npm run script](https://github.com/percebus/github-actions-npm/actions/workflows/npm_run_script.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/npm_run_script.yml)
 - [![npm test](https://github.com/percebus/github-actions-npm/actions/workflows/npm_test.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/npm_test.yml)
+- [![cmd run](https://github.com/percebus/github-actions-npm/actions/workflows/cmd_run.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/cmd_run.yml)
 
 ##### pull_request
 
