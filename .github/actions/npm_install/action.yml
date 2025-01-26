@@ -21,7 +21,8 @@ runs:
 
     - name: npm run setup:ci
       shell: bash
-      run: npm run setup:ci --prefix ${{ inputs.working-directory }} --if-present
+      working-directory: ${{ inputs.working-directory }}
+      run: npm run setup:ci --if-present
 
     - name: npm install
       shell: bash
