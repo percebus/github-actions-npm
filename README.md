@@ -8,7 +8,7 @@
 
 ### Actions
 
-- [![actions/npm_install](https://github.com/percebus/github-actions-npm/actions/workflows/action_npm_install.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/action_npm_install.yml)
+- [![actions/npm_install](https://github.com/percebus/github-actions-npm/actions/workflows/actions__npm_install.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/actions__npm_install.yml)
 
 ### Workflows
 
