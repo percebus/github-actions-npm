@@ -5,6 +5,12 @@ on:
 
 jobs:
   npm_run_lint:
-    uses: ./.github/workflows/npm_run_script.yml
-    with:
-      script: lint
+    name: npm run lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: ./.github/actions/npm_install
+
+      - name: npm run lint
+        run: npm run lint
