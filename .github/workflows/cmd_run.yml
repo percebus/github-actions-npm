@@ -1,5 +1,6 @@
 name: cmd run
 on:
+  push:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
       working-directory:
