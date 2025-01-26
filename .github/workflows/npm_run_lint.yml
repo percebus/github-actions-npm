@@ -1,3 +1,4 @@
+# XXX Use npm_run instead
 name: npm run lint
 on:
   push:

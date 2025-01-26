@@ -1,0 +1,43 @@
+name: npm run
+on:
+  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+    inputs:
+      working-directory:
+        type: string
+        description: working-directory
+        required: false
+        default: "."
+
+      script:
+        type: string
+        description: The npm script to run.
+        required: false
+        default: test
+
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+    inputs:
+      working-directory:
+        type: string
+        description: working-directory
+        required: false
+        default: "."
+
+      script:
+        type: string
+        description: The npm script to run.
+        required: false
+        default: test
+
+jobs:
+  npm_run:
+    name: npm run ${{ github.event.inputs.script }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: percebus/github-actions-npm/.github/actions/npm_install@main
+        with:
+          working-directory: ${{ github.event.inputs.working-directory }}
+
+      - name: npm run ${{ github.event.inputs.script }}
+        run: npm run ${{ github.event.inputs.script }} --prefix ${{ github.event.inputs.working-directory }}
