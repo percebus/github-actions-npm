@@ -30,14 +30,14 @@ on:
 
 jobs:
   npm_run:
-    name: npm run ${{ github.event.inputs.script }}
+    name: npm run ${{ inputs.script }}
     runs-on: ubuntu-latest
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
       - uses: percebus/github-actions-npm/.github/actions/npm_install@main
         with:
-          working-directory: ${{ github.event.inputs.working-directory }}
+          working-directory: ${{ inputs.working-directory }}
 
-      - name: npm run ${{ github.event.inputs.script }}
-        run: npm run ${{ github.event.inputs.script }} --prefix ${{ github.event.inputs.working-directory }}
+      - name: npm run ${{ inputs.script }}
+        run: npm run ${{ inputs.script }} --prefix ${{ inputs.working-directory }}
