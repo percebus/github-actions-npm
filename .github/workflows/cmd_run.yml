@@ -11,7 +11,7 @@ on:
 
       cmd:
         type: string
-        description: The npm script to run.
+        description: The bash command to run.
         required: false
         default: npm test
 
