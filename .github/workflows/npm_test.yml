@@ -2,17 +2,17 @@ name: npm test
 on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
     inputs:
-      reporter:
-        type: string
-        description: The test reporter to use.
-        required: false
-        default: ""
-
       working-directory:
         type: string
         description: working-directory
         required: false
         default: "."
+
+      reporter:
+        type: string
+        description: The test reporter to use.
+        required: false
+        default: ""
 
       files_pattern:
         type: string
@@ -45,17 +45,17 @@ on:
 
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
-      reporter:
-        type: string
-        description: The test reporter to use.
-        required: false
-        default: ""
-
       working-directory:
         type: string
         description: working-directory
         required: false
         default: "."
+
+      reporter:
+        type: string
+        description: The test reporter to use.
+        required: false
+        default: ""
 
       files_pattern:
         type: string
