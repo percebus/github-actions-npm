@@ -16,7 +16,8 @@ jobs:
     name: default
     uses: ./.github/workflows/npm_test.yml
     with: # XXX
-      files_pattern: "junit.xml"
+      reporter: ""
+      files_pattern: ""
 
   script_matrix:
     needs: default
