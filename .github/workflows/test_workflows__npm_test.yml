@@ -15,21 +15,21 @@ jobs:
   default:
     name: default
     uses: ./.github/workflows/npm_test.yml
-    with:
+    with: # XXX default should NOT have values
       reporter: jest-junit
       files_pattern: junit.xml
 
-  script_matrix:
+  reporter_matrix:
     needs: default
     strategy:
       max-parallel: 6
       fail-fast: false
       matrix:
-        reportert:
+        reporter:
           - ""
           - jest-junit
 
-    name: "script: ${{ matrix.reportert }}"
+    name: "script: ${{ matrix.reporter }}"
     uses: ./.github/workflows/npm_test.yml
     with:
       reporter: ${{ matrix.reporter }}
@@ -43,8 +43,12 @@ jobs:
       matrix:
         OS:
           - ubuntu-latest
-          - windows-latest
-          - macOS-latest
+
+          #
+          # FIXME not working
+          # "Container action is only supported for Linux"
+          # - windows-latest
+          # - macOS-latest
 
     name: "@ ${{ matrix.OS }}"
     uses: ./.github/workflows/npm_test.yml
