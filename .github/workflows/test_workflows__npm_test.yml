@@ -32,7 +32,7 @@ jobs:
         files_pattern:
           - junit.xml
           - junit*.xml
-          - *.xml
+          - "*.xml"
 
     name: "file_pattern: ${{ matrix.files_pattern }}"
     uses: ./.github/workflows/npm_test.yml
