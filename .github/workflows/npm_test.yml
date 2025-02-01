@@ -29,7 +29,7 @@ on:
         type: string
         description: The pattern to match the test result files. i.e. 'junit.xml'
         required: false
-        default: junit.xml
+        default: ""
 
       tests_name:
         type: string
