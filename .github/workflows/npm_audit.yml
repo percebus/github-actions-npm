@@ -1,8 +1,8 @@
 name: npm audit
 on:
   push:
-  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+  workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
       ssh-private-key:
         type: string
