@@ -83,10 +83,10 @@ jobs:
       - uses: percebus/github-actions-testing/.github/actions/junit@main
         if: ${{ inputs.reporter }} == 'jest-junit'
         with:
-          runs-on: ${{ inputs.runs-on }}
-          reporter: ${{ inputs.reporter }}
+          runs-on: ${{ inputs.runs-on || 'ubuntu-latest' }}
+          reporter: ${{ inputs.reporter || 'jest-junit' }}
           tests_name: ${{ inputs.tests_name }}
-          files_pattern: ${{ inputs.files_pattern }}
+          files_pattern: ${{ inputs.files_pattern || 'junit.xml' }}
           summary_title: ${{ inputs.summary_title }}
           list-suites: ${{ inputs.list-suites }}
           list-tests: ${{ inputs.list-tests }}
