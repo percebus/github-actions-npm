@@ -11,17 +11,10 @@ permissions:
   checks: write
   pull-requests: write
 
-env: # XXX default should NOT have values
-  REPORTER: jest-junit
-  FILES_PATTERN: junit.xml
-
 jobs:
   default:
     name: default
     uses: ./.github/workflows/npm_test.yml
-    # with: # XXX default should NOT have values
-    #   reporter: $REPORTER
-    #   files_pattern: $FILES_PATTERN
 
   filt_pattern_matrix:
     needs: default
@@ -37,7 +30,6 @@ jobs:
     name: "file_pattern: ${{ matrix.files_pattern }}"
     uses: ./.github/workflows/npm_test.yml
     with:
-      reporter: $REPORTER
       files_pattern: ${{ matrix.files_pattern }}
 
   os_matrix:
@@ -59,5 +51,3 @@ jobs:
     uses: ./.github/workflows/npm_test.yml
     with:
       runs-on: ${{ matrix.OS }}
-      reporter: $REPORTER
-      files_pattern: $FILES_PATTERN
