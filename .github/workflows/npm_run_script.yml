@@ -2,20 +2,17 @@ name: npm run script
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
-      working-directory:
+      runs-on:
         type: string
-        description: working-directory
+        description: The type of machine to run on
         required: false
-        default: "."
+        default: ubuntu-latest
 
-      script:
+      ssh-private-key:
         type: string
-        description: The npm script to run.
+        description: SSH private key
         required: false
-        default: test
 
-  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
-    inputs:
       working-directory:
         type: string
         description: working-directory
@@ -31,13 +28,18 @@ on:
 jobs:
   npm_run:
     name: npm run ${{ inputs.script }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.runs-on }}
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
+        with:
+          ssh-private-key: ${{ inputs.ssh-private-key }}
+
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
       - uses: percebus/github-actions-npm/.github/actions/npm_install@main
         with:
           working-directory: ${{ inputs.working-directory }}
 
       - name: npm run ${{ inputs.script }}
-        run: npm run ${{ inputs.script }} --prefix ${{ inputs.working-directory }}
+        # NOTE: --cwd not working
+        working-directory: ${{ inputs.working-directory }}
+        run: npm run ${{ inputs.script }}
