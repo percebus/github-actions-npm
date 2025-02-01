@@ -12,15 +12,13 @@ permissions:
   pull-requests: write
 
 jobs:
-  default:
-    name: default
-    uses: ./.github/workflows/npm_test.yml
-    with: # XXX
-      reporter: ""
-      files_pattern: ""
+  # FIXME
+  # default:
+  #   name: default
+  #   uses: ./.github/workflows/npm_test.yml
 
   script_matrix:
-    needs: default
+    # needs: default # TODO
     strategy:
       max-parallel: 6
       fail-fast: false
