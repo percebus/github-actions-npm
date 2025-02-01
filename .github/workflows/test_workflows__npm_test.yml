@@ -1,0 +1,40 @@
+name: Test workflows/npm_test
+on:
+  push:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  default:
+    name: default
+    uses: ./.github/workflows/npm_test.yml
+
+  script_matrix:
+    needs: default
+    strategy:
+      max-parallel: 6
+      fail-fast: false
+      matrix:
+        reportert:
+          - ""
+          - jest-junit
+
+    name: "script: ${{ matrix.reportert }}"
+    uses: ./.github/workflows/npm_test.yml
+    with:
+      reporter: ${{ matrix.reporter }}
+
+  os_matrix:
+    needs: default
+    strategy:
+      max-parallel: 6
+      fail-fast: false
+      matrix:
+        OS:
+          - ubuntu-latest
+          - windows-latest
+          - macOS-latest
+
+    name: "@ ${{ matrix.OS }}"
+    uses: ./.github/workflows/npm_test.yml
+    with:
+      runs-on: ${{ matrix.OS }}
