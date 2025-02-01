@@ -12,13 +12,15 @@ permissions:
   pull-requests: write
 
 jobs:
-  # FIXME
-  # default:
-  #   name: default
-  #   uses: ./.github/workflows/npm_test.yml
+  default:
+    name: default
+    uses: ./.github/workflows/npm_test.yml
+    with:
+      reporter: jest-junit
+      files_pattern: junit.xml
 
   script_matrix:
-    # needs: default # TODO
+    needs: default
     strategy:
       max-parallel: 6
       fail-fast: false
@@ -31,9 +33,10 @@ jobs:
     uses: ./.github/workflows/npm_test.yml
     with:
       reporter: ${{ matrix.reporter }}
+      files_pattern: junit.xml
 
   os_matrix:
-    # needs: default # TODO
+    needs: default
     strategy:
       max-parallel: 6
       fail-fast: false
@@ -47,3 +50,5 @@ jobs:
     uses: ./.github/workflows/npm_test.yml
     with:
       runs-on: ${{ matrix.OS }}
+      reporter: jest-junit
+      files_pattern: junit.xml
