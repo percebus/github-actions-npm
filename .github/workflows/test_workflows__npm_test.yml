@@ -33,7 +33,7 @@ jobs:
       reporter: ${{ matrix.reporter }}
 
   os_matrix:
-    needs: default
+    # needs: default # TODO
     strategy:
       max-parallel: 6
       fail-fast: false
