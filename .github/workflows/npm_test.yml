@@ -90,6 +90,8 @@ jobs:
         run: npm test --prefix ${{ inputs.working-directory }}
 
       - uses: percebus/github-actions-testing/.github/actions/junit@main
+        # TODO? Remove inputs.reporter?
+        # What if I want to include `summary` & `deltas` but not `test-reporter`?
         if: ${{ inputs.files_pattern != '' && inputs.reporter == 'jest-junit' }}
         with:
           files_pattern: ${{ inputs.files_pattern }}
