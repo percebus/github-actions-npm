@@ -2,12 +2,6 @@ name: npm test
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
-      runs-on:
-        type: string
-        description: The type of machine to run on
-        required: false
-        default: ubuntu-latest
-
       ssh-private-key:
         type: string
         description: SSH private key
@@ -19,15 +13,16 @@ on:
         required: false
         default: "."
 
-      reporter:
-        type: string
-        description: The test reporter to use.
-        required: false
-        default: ""
-
       files_pattern:
         type: string
         description: The pattern to match the test result files. i.e. 'junit.xml'
+        required: false
+        default: ""
+
+      # test-reporter inputs
+      reporter:
+        type: string
+        description: The test reporter to use.
         required: false
         default: ""
 
@@ -36,12 +31,6 @@ on:
         description: The name of the tests.
         required: false
         default: Unit Tests
-
-      summary_title:
-        type: string
-        description: The title of the test summary.
-        required: false
-        default: Unit Tests Summary
 
       list-suites:
         type: string
@@ -54,6 +43,26 @@ on:
         description: Limits which test cases are listed
         required: false
         default: failed
+
+      # test-summary inputs
+      summary_title:
+        type: string
+        description: The title of the test summary.
+        required: false
+        default: Unit Tests Summary
+
+      # publish-test-deltas inputs
+      publish-test-deltas:
+        type: string
+        description: Publish test deltas
+        required: false
+        default: "true"
+
+      runs-on:
+        type: string
+        description: The type of machine to run on
+        required: false
+        default: ubuntu-latest
 
 # SRC: https://github.com/EnricoMi/publish-unit-test-result-action?tab=readme-ov-file#permissions
 # SRC: https://github.com/dorny/test-reporter?tab=readme-ov-file#recommended-setup-for-public-repositories
@@ -81,12 +90,16 @@ jobs:
         run: npm test --prefix ${{ inputs.working-directory }}
 
       - uses: percebus/github-actions-testing/.github/actions/junit@main
-        if: ${{ inputs.reporter == 'jest-junit' }}
+        if: ${{ inputs.files_pattern != '' && inputs.reporter == 'jest-junit' }}
         with:
-          runs-on: ${{ inputs.runs-on }}
+          files_pattern: ${{ inputs.files_pattern }}
+          # test-reporter inputs
           reporter: ${{ inputs.reporter }}
           tests_name: ${{ inputs.tests_name }}
-          files_pattern: ${{ inputs.files_pattern }}
-          summary_title: ${{ inputs.summary_title }}
           list-suites: ${{ inputs.list-suites }}
           list-tests: ${{ inputs.list-tests }}
+          # test-summary inputs
+          summary_title: ${{ inputs.summary_title }}
+          # publish-test-deltas inputs
+          publish-test-deltas: ${{ inputs.publish-test-deltas }}
+          runs-on: ${{ inputs.runs-on }}
