@@ -40,7 +40,7 @@ jobs:
           - windows-latest
           - macOS-latest
 
-    name: "${{ matrix.working-directory }} @ ${{ matrix.OS }}"
+    name: "prefix:${{ matrix.working-directory }} @ ${{ matrix.OS }}"
     uses: ./.github/workflows/cmd_run.yml
     with:
       cmd: pwd

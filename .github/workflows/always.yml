@@ -4,7 +4,7 @@ on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
 jobs:
-  npm_run_lint:
+  lint:
     uses: ./.github/workflows/npm_run_script.yml
     with:
       script: lint

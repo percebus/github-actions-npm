@@ -38,7 +38,7 @@ jobs:
           - windows-latest
           - macOS-latest
 
-    name: "${{ matrix.working-directory }} @ ${{ matrix.OS }}"
+    name: "prefix:${{ matrix.working-directory }} @ ${{ matrix.OS }}"
     uses: ./.github/workflows/npm_run_script.yml
     with:
       # windows complains about EoL characters in the script
