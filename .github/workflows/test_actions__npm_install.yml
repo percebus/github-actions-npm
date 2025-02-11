@@ -12,7 +12,7 @@ jobs:
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
       - uses: ./.github/actions/npm_install
 
-  ls_options:
+  ls_options__matrix:
     needs: default
     strategy:
       max-parallel: 6
@@ -37,3 +37,33 @@ jobs:
       - uses: ./.github/actions/npm_install
         with:
           ls_options: ${{ matrix.ls_options }}
+
+  working-directory__matrix:
+    needs: default
+    strategy:
+      max-parallel: 6
+      fail-fast: false
+      matrix:
+        OS:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+
+        working-directory:
+          - .
+          - node/sub-package
+
+        exclude:
+          # already tested
+          - OS: ubuntu-latest
+            working-directory: .
+
+    runs-on: ${{ matrix.OS }}
+    name: "prefix ${{ matrix.working-directory }} @ ${{ matrix.OS }}"
+    steps:
+      - uses: percebus/github-actions-common/.github/actions/checkout@main
+      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: ./.github/actions/npm_install
+        with:
+          ls_options: ""
+          working-directory: ${{ matrix.working-directory }}
