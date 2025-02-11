@@ -59,7 +59,7 @@ jobs:
             working-directory: .
 
     runs-on: ${{ matrix.OS }}
-    name: "prefix:${{ matrix.working-directory }} @ ${{ matrix.OS }}"
+    name: "prefix ${{ matrix.working-directory }} @ ${{ matrix.OS }}"
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/node_setup@main
