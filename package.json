@@ -4,6 +4,7 @@
   "description": "GitHub re-usable workflows & actions",
   "main": "index.js",
   "scripts": {
+    "echo": "echo '.'",
     "prettier": "prettier .",
     "prettier:write": "npm run prettier -- --write",
     "prettier:check": "npm run prettier -- --check",
