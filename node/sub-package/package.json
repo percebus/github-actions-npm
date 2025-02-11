@@ -1,0 +1,23 @@
+{
+  "name": "sub-package",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "prettier": "prettier .",
+    "prettier:write": "npm run prettier -- --write",
+    "prettier:check": "npm run prettier -- --check",
+    "jest:ci": "jest --ci",
+    "jest:ci:unit": "npm run jest:ci -- unit.spec.js",
+    "lint": "npm run prettier:check",
+    "style": "npm run prettier:write",
+    "poststyle": "npm run lint",
+    "pretest": "npm run lint",
+    "test": "exit 0"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "description": "",
+  "devDependencies": {
+    "prettier": "^3.5.0"
+  }
+}

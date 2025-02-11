@@ -16,7 +16,7 @@ jobs:
     name: default
     uses: ./.github/workflows/npm_test.yml
 
-  reporter_matrix:
+  reporter__matrix:
     needs: default
     strategy:
       max-parallel: 6
@@ -31,7 +31,7 @@ jobs:
     with:
       reporter: ${{ matrix.reporter }}
 
-  file_pattern_matrix:
+  file_pattern__matrix:
     needs: default
     strategy:
       max-parallel: 6
@@ -47,12 +47,16 @@ jobs:
     with:
       files_pattern: ${{ matrix.files_pattern }}
 
-  os_matrix:
+  working-directory___matrix:
     needs: default
     strategy:
       max-parallel: 6
       fail-fast: false
       matrix:
+        working-directory:
+          - .
+          - node/sub-package
+
         OS:
           - ubuntu-latest
 
@@ -62,7 +66,9 @@ jobs:
           # - windows-latest
           # - macOS-latest
 
-    name: "@ ${{ matrix.OS }}"
+    name: "${{ matrix.working-directory }} @ ${{ matrix.OS }}"
     uses: ./.github/workflows/npm_test.yml
     with:
+      # windows complains about EoL characters in the script
       runs-on: ${{ matrix.OS }}
+      working-directory: ${{ matrix.working-directory }}
