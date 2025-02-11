@@ -43,6 +43,6 @@ jobs:
     name: "${{ matrix.working-directory }} @ ${{ matrix.OS }}"
     uses: ./.github/workflows/cmd_run.yml
     with:
-      cmd: echo "bananas"
+      cmd: pwd
       runs-on: ${{ matrix.OS }}
       working-directory: ${{ matrix.working-directory }}
