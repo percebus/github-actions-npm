@@ -30,7 +30,7 @@ on:
         type: string
         description: The name of the tests.
         required: false
-        default: Unit Tests
+        default: Test Results
 
       list-suites:
         type: string
@@ -49,7 +49,7 @@ on:
         type: string
         description: The title of the test summary.
         required: false
-        default: Unit Tests Summary
+        default: Test Results Summary
 
       # publish-test-deltas inputs
       publish-test-deltas:
@@ -60,9 +60,39 @@ on:
 
       runs-on:
         type: string
-        description: The type of machine to run on
+        description: The OS to run the action on.
         required: false
         default: ubuntu-latest
+
+      large_files:
+        type: string
+        description: Support for large files is enabled when set to true. Defaults to false, unless ignore_runs is true.
+        default: "false" # ignore_runs == true
+        required: false
+
+      ignore_runs:
+        type: string
+        description: Does not collect test run information from the test result files, which is useful for very large files. This disables any check run annotations.
+        default: "false"
+        required: false
+
+      comment_mode:
+        type: string
+        description: The action posts comments to pull requests that are associated with the commit.
+        required: false
+        default: always
+
+      comment_title:
+        type: string
+        description: An alternative name for the pull request comment.
+        required: false
+        default: Test Results Deltas
+
+      check_name:
+        type: string
+        description: An alternative name for the check result.
+        required: false
+        default: Test Results Deltas
 
 # SRC: https://github.com/EnricoMi/publish-unit-test-result-action?tab=readme-ov-file#permissions
 # SRC: https://github.com/dorny/test-reporter?tab=readme-ov-file#recommended-setup-for-public-repositories
@@ -105,3 +135,8 @@ jobs:
           # publish-test-deltas inputs
           publish-test-deltas: ${{ inputs.publish-test-deltas }}
           runs-on: ${{ inputs.runs-on }}
+          large_files: ${{ inputs.large_files }}
+          ignore_runs: ${{ inputs.ignore_runs }}
+          comment_mode: ${{ inputs.comment_mode }}
+          comment_title: ${{ inputs.comment_title }}
+          check_name: ${{ inputs.check_name }}
