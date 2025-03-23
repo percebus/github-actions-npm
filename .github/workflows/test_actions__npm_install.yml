@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
-      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: percebus/github-actions-node/.github/actions/setup@main
       - uses: ./.github/actions/npm_install
 
   ls_options__matrix:
@@ -33,7 +33,7 @@ jobs:
     name: "ls ${{ matrix.ls_options }} @ ${{ matrix.OS }}"
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
-      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: percebus/github-actions-node/.github/actions/setup@main
       - uses: ./.github/actions/npm_install
         with:
           ls_options: ${{ matrix.ls_options }}
@@ -62,7 +62,7 @@ jobs:
     name: "prefix ${{ matrix.working-directory }} @ ${{ matrix.OS }}"
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
-      - uses: percebus/github-actions-node/.github/actions/node_setup@main
+      - uses: percebus/github-actions-node/.github/actions/setup@main
       - uses: ./.github/actions/npm_install
         with:
           ls_options: ""
