@@ -33,7 +33,7 @@ jobs:
           ssh-private-key: ${{ inputs.ssh-private-key }}
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: ./npm_install
+      - uses: percebus/github-actions-npm/.github/actions/npm_install@main
 
       - name: npm audit
         run: npm audit ${{ inputs.cli_arguments }}
