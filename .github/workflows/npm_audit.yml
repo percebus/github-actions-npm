@@ -15,6 +15,7 @@ on:
         description: CLI arguments to pass to the action
         required: false
         default: --omit=dev
+
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
@@ -31,7 +32,7 @@ jobs:
           ssh-private-key: ${{ inputs.ssh-private-key }}
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: percebus/github-actions-npm/.github/actions/npm_install@main
+      - uses: ./npm_install
 
       - name: npm audit
         run: npm audit ${{ inputs.cli_arguments }}
