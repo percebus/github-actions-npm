@@ -25,6 +25,10 @@ on:
         required: false
         default: npm test
 
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   cmd_run:
     name: ${{ inputs.cmd }}

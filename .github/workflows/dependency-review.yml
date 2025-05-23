@@ -11,6 +11,12 @@ on:
         description: SSH private key
         required: false
 
+      npm_audit_cli_arguments:
+        type: string
+        description: CLI arguments to pass to the action
+        required: false
+        default: --omit=dev
+
 permissions:
   contents: read
 
@@ -24,3 +30,4 @@ jobs:
     uses: ./.github/workflows/npm_audit.yml
     with:
       ssh-private-key: ${{ inputs.ssh-private-key }}
+      cli_arguments: ${{ inputs.npm_audit_cli_arguments }}

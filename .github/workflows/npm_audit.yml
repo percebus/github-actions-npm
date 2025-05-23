@@ -1,4 +1,5 @@
 name: npm audit
+
 on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
@@ -8,6 +9,15 @@ on:
         type: string
         description: SSH private key
         required: false
+
+      cli_arguments:
+        type: string
+        description: CLI arguments to pass to the action
+        required: false
+        default: --omit=dev
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 
 jobs:
   # NOTE: is this job redundant?
@@ -24,5 +34,5 @@ jobs:
       - uses: percebus/github-actions-npm/.github/actions/npm_install@main
 
       - name: npm audit
-        run: npm audit
+        run: npm audit ${{ inputs.cli_arguments }}
         continue-on-error: true
