@@ -36,5 +36,5 @@ jobs:
       - uses: percebus/github-actions-npm/.github/actions/npm_install@main
 
       - name: npm audit
-        run: npm audit ${{ inputs.cli_arguments }}
+        run: npm audit --omit=dev
         continue-on-error: true
