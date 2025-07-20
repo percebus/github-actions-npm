@@ -29,7 +29,7 @@ jobs:
           - "-a"
         OS:
           - ubuntu-latest
-          - macos-latest
+          - macOS
         include:
           - OS: windows-latest
             ls_options: ""
@@ -51,7 +51,7 @@ jobs:
       matrix:
         OS:
           - ubuntu-latest
-          - macos-latest
+          - macOS
           - windows-latest
 
         working-directory:

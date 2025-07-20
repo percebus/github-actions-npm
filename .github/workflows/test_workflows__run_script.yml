@@ -41,7 +41,7 @@ jobs:
         OS:
           - ubuntu-latest
           - windows-latest
-          - macOS-latest
+          - macOS
 
     name: "prefix ${{ matrix.working-directory }} @ ${{ matrix.OS }}"
     uses: ./.github/workflows/run_script.yml
