@@ -1,9 +1,6 @@
 name: Dependencies Review & Audit
 
 on:
-  # "This run was triggered by the "push" event, which is unsupported.
-  #  Please ensure you are using the "pull_request" event for this workflow."
-  pull_request:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     inputs:
       ssh-private-key:
@@ -19,6 +16,7 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
 
 jobs:
   dependency-review:
