@@ -1,4 +1,4 @@
-name: Test workflows/cmd_run
+name: Test workflows/run_cmd
 
 on:
   push:
@@ -11,7 +11,7 @@ concurrency:
 jobs:
   default:
     name: default
-    uses: ./.github/workflows/cmd_run.yml
+    uses: ./.github/workflows/run_cmd.yml
 
   cmd__matrix:
     needs: default
@@ -26,7 +26,7 @@ jobs:
           - echo bananas
 
     name: "cmd: '${{ matrix.cmd }}'"
-    uses: ./.github/workflows/cmd_run.yml
+    uses: ./.github/workflows/run_cmd.yml
     with:
       cmd: ${{ matrix.cmd }}
 
@@ -46,7 +46,7 @@ jobs:
           - macOS-latest
 
     name: "prefix ${{ matrix.working-directory }} @ ${{ matrix.OS }}"
-    uses: ./.github/workflows/cmd_run.yml
+    uses: ./.github/workflows/run_cmd.yml
     with:
       cmd: pwd
       runs-on: ${{ matrix.OS }}

@@ -1,4 +1,4 @@
-name: Test workflows/npm_test
+name: Test workflows/test
 
 on:
   push:
@@ -19,7 +19,7 @@ permissions:
 jobs:
   default:
     name: default
-    uses: ./.github/workflows/npm_test.yml
+    uses: ./.github/workflows/test.yml
 
   reporter__matrix:
     needs: default
@@ -32,7 +32,7 @@ jobs:
           - jest-junit
 
     name: "reporter: ${{ matrix.reporter }}"
-    uses: ./.github/workflows/npm_test.yml
+    uses: ./.github/workflows/test.yml
     with:
       reporter: ${{ matrix.reporter }}
 
@@ -48,7 +48,7 @@ jobs:
           - "*.xml"
 
     name: "file_pattern: ${{ matrix.files_pattern }}"
-    uses: ./.github/workflows/npm_test.yml
+    uses: ./.github/workflows/test.yml
     with:
       files_pattern: ${{ matrix.files_pattern }}
 
@@ -72,7 +72,7 @@ jobs:
           # - macOS-latest
 
     name: "prefix ${{ matrix.working-directory }} @ ${{ matrix.OS }}"
-    uses: ./.github/workflows/npm_test.yml
+    uses: ./.github/workflows/test.yml
     with:
       # windows complains about EoL characters in the script
       runs-on: ${{ matrix.OS }}

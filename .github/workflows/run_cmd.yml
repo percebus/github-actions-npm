@@ -26,7 +26,7 @@ on:
         default: npm test
 
 jobs:
-  cmd_run:
+  run_cmd:
     name: ${{ inputs.cmd }}
     runs-on: ${{ inputs.runs-on }}
     steps:
@@ -35,7 +35,7 @@ jobs:
           ssh-private-key: ${{ inputs.ssh-private-key }}
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: percebus/github-actions-npm/.github/actions/npm_install@main
+      - uses: percebus/github-actions-npm/.github/actions/install@main
         with:
           working-directory: ${{ inputs.working-directory }}
 
