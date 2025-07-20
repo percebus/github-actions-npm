@@ -1,13 +1,12 @@
-name: Test workflows/npm_test
+name: Test workflows/test
 
 on:
   push:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
 
-# TODO?
-# concurrency:
-#   group: ${{ github.ref }}-${{ github.workflow }}
-#   cancel-in-progress: true
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
 
 # SRC: https://github.com/EnricoMi/publish-unit-test-result-action?tab=readme-ov-file#permissions
 # SRC: https://github.com/dorny/test-reporter?tab=readme-ov-file#recommended-setup-for-public-repositories
@@ -20,7 +19,7 @@ permissions:
 jobs:
   default:
     name: default
-    uses: ./.github/workflows/npm_test.yml
+    uses: ./.github/workflows/test.yml
 
   reporter__matrix:
     needs: default
@@ -33,7 +32,7 @@ jobs:
           - jest-junit
 
     name: "reporter: ${{ matrix.reporter }}"
-    uses: ./.github/workflows/npm_test.yml
+    uses: ./.github/workflows/test.yml
     with:
       reporter: ${{ matrix.reporter }}
 
@@ -49,7 +48,7 @@ jobs:
           - "*.xml"
 
     name: "file_pattern: ${{ matrix.files_pattern }}"
-    uses: ./.github/workflows/npm_test.yml
+    uses: ./.github/workflows/test.yml
     with:
       files_pattern: ${{ matrix.files_pattern }}
 
@@ -70,10 +69,10 @@ jobs:
           # FIXME not working
           # "Container action is only supported for Linux"
           # - windows-latest
-          # - macOS-latest
+          # - macOS
 
     name: "prefix ${{ matrix.working-directory }} @ ${{ matrix.OS }}"
-    uses: ./.github/workflows/npm_test.yml
+    uses: ./.github/workflows/test.yml
     with:
       # windows complains about EoL characters in the script
       runs-on: ${{ matrix.OS }}
