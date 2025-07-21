@@ -24,6 +24,8 @@ jobs:
     with:
       ssh-private-key: ${{ inputs.ssh-private-key }}
 
+  # NOTE: is this job redundant?
+  # does dependency-review-action accomplish the same, and more?
   audit:
     uses: percebus/github-actions-npm/.github/workflows/audit.yml@main
     with:
