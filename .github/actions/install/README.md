@@ -21,7 +21,7 @@ When developing locally, sometimes you want to run `npm run setup(:ci)` only 1x.
 
 ## References
 
-- [`npm` CLI Commands](https://docs.npmjs.com/cli/v9/commands)
-  - [`npm-install`](https://docs.npmjs.com/cli/v9/commands/npm-install)
-  - [`npm-ci`](https://docs.npmjs.com/cli/v9/commands/npm-ci)
-  - [`npm-run-script`](https://docs.npmjs.com/cli/v9/commands/npm-run-script)
+- [`npm` CLI Commands](https://docs.npmjs.com/cli/v11/commands)
+  - [`npm-install`](https://docs.npmjs.com/cli/v11/commands/npm-install)
+  - [`npm-ci`](https://docs.npmjs.com/cli/v11/commands/npm-ci)
+  - [`npm-run`](https://docs.npmjs.com/cli/v11/commands/npm-run)
