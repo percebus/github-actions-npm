@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "echo": "echo 'node/sub-package'",
-    "prettier": "prettier .",
-    "prettier:write": "npm run prettier -- --write",
-    "prettier:check": "npm run prettier -- --check",
+    "_prettier": "prettier .",
+    "prettier:write": "npm run _prettier -- --write",
+    "prettier:check": "npm run _prettier -- --check",
     "jest:ci": "jest --ci",
     "jest:ci:unit": "npm run jest:ci -- unit.spec.js",
     "lint": "npm run prettier:check",
