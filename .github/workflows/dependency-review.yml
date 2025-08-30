@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   dependency-review:
-    uses: percebus/github-actions-common/.github/workflows/dependency-review.yml@main
+    uses: percebus/github-actions-compliance/.github/workflows/dependency-review.yml@main
     with:
       ssh-private-key: ${{ inputs.ssh-private-key }}
 
