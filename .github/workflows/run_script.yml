@@ -26,8 +26,9 @@ on:
         required: false
         default: test
 
-permissions:
-  contents: read
+# NOTE: Set in final file
+# permissions:
+#   contents: read
 
 jobs:
   npm_run:

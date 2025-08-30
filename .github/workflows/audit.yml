@@ -28,9 +28,10 @@ on:
         required: false
         default: "--omit=dev"
 
-permissions:
-  contents: read
-  pull-requests: read
+# NOTE: Set in final file
+# permissions:
+#   contents: read
+#   pull-requests: read
 
 jobs:
   npm_audit:
