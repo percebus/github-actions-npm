@@ -14,6 +14,7 @@ on:
         required: false
         default: "--omit=dev"
 
+# XXX? Should this be added on pull_request instead?
 permissions:
   contents: read
   pull-requests: read

@@ -28,6 +28,10 @@ on:
         required: false
         default: "--omit=dev"
 
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   npm_audit:
     name: npm audit
