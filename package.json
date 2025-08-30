@@ -2,12 +2,11 @@
   "name": "github-actions-npm",
   "version": "1.0.0",
   "description": "GitHub re-usable workflows & actions",
-  "main": "index.js",
   "scripts": {
     "echo": "echo '.'",
-    "prettier": "prettier .",
-    "prettier:write": "npm run prettier -- --write",
-    "prettier:check": "npm run prettier -- --check",
+    "_prettier": "prettier .",
+    "prettier:write": "npm run _prettier -- --write",
+    "prettier:check": "npm run _prettier -- --check",
     "jest:ci": "jest --ci",
     "jest:ci:unit": "npm run jest:ci -- unit.spec.js",
     "lint": "npm run prettier:check",
@@ -28,7 +27,7 @@
     "workflows"
   ],
   "author": "JCystems",
-  "license": "SEE LICENSE IN LICENSE.md",
+  "license": "SEE LICENSE IN LICENSE",
   "bugs": {
     "url": "https://github.com/percebus/github-actions-npm/issues"
   },
