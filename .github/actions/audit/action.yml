@@ -7,9 +7,8 @@ inputs:
     required: false
     default: "."
 
-  # FIXME RENAME: npm_audit_cli_options
   npm_audit_cli_options:
-    description: npm audit CLI arguments
+    description: npm audit CLI options
     required: false
     default: "--omit=dev"
 
