@@ -11,7 +11,7 @@
 | action                                 | tests                                                                                                                                                                                                                       |
 | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`install`](./.github/actions/install) | [![Test actions/install](https://github.com/percebus/github-actions-npm/actions/workflows/test_actions__install.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/test_actions__install.yml) |
-| [`audit`](./.github/actions/audit)     | [![npm audit](https://github.com/percebus/github-actions-npm/actions/workflows/audit.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/audit.yml)                                                           |
+| [`audit`](./.github/actions/audit)     | [![npm audit](https://github.com/percebus/github-actions-npm/actions/workflows/audit.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/audit.yml)                                            |
 
 ### Workflows
 
