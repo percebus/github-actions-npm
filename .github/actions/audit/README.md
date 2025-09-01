@@ -1,6 +1,6 @@
 # (npm) audit
 
-[![npm audit](https://github.com/percebus/github-actions-npm/actions/workflows/audit.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/audit.yml)
+[![Pull Request](https://github.com/percebus/github-actions-npm/actions/workflows/pull_request.yml/badge.svg?event=pull_request)](https://github.com/percebus/github-actions-npm/actions/workflows/pull_request.yml)
 
 [`LICENSE`](./LICENSE)
 
