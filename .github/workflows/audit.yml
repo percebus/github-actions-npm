@@ -9,6 +9,13 @@ on:
         description: SSH private key
         required: false
 
+      working-directory:
+        type: string
+        description: Working directory
+        required: false
+        default: .
+
+      # FIXME RENAME: npm_audit_cli_options
       cli_arguments:
         type: string
         description: CLI arguments to pass to the action
@@ -21,6 +28,12 @@ on:
         type: string
         description: SSH private key
         required: false
+
+      working-directory:
+        type: string
+        description: Working directory
+        required: false
+        default: .
 
       cli_arguments:
         type: string
@@ -44,10 +57,7 @@ jobs:
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
       - uses: percebus/github-actions-npm/.github/actions/install@main
-
-      # - uses: percebus/github-actions-npm/.github/actions/audit@main  # TODO
-      # TODO XXX vvv
-      - name: npm audit
-        # run: npm audit ${{ inputs.cli_arguments }} # FIXME why doesn't this work?
-        run: npm audit --omit=dev
-        continue-on-error: true
+      - uses: percebus/github-actions-npm/.github/actions/audit@main
+        with:
+          npm_audit_cli_arguments: ${{ inputs.cli_arguments }}
+          working-directory: ${{ inputs.working-directory }}
