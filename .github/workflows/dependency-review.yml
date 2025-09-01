@@ -8,10 +8,15 @@ on:
         description: SSH private key
         required: false
 
-      # FIXME RENAME: npm_audit_cli_options
+      working-directory:
+        type: string
+        description: Working directory
+        required: false
+        default: .
+
       npm_audit_cli_options:
         type: string
-        description: CLI arguments to pass to the action
+        description: CLI options to pass to the action
         required: false
         default: "--omit=dev"
 
@@ -32,4 +37,5 @@ jobs:
     uses: percebus/github-actions-npm/.github/workflows/audit.yml@main
     with:
       ssh-private-key: ${{ inputs.ssh-private-key }}
+      working-directory: ${{ inputs.working-directory }}
       npm_audit_cli_options: ${{ inputs.npm_audit_cli_options }}

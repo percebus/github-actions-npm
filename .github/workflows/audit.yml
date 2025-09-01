@@ -14,10 +14,9 @@ on:
         required: false
         default: .
 
-      # FIXME RENAME: npm_audit_cli_options
       npm_audit_cli_options:
         type: string
-        description: CLI arguments to pass to the action
+        description: npm audit CLI options
         required: false
         default: "--omit=dev"
 
@@ -58,5 +57,5 @@ jobs:
       - uses: percebus/github-actions-npm/.github/actions/install@main
       - uses: percebus/github-actions-npm/.github/actions/audit@main
         with:
-          npm_audit_cli_options: ${{ inputs.npm_audit_cli_options }}
           working-directory: ${{ inputs.working-directory }}
+          npm_audit_cli_options: ${{ inputs.npm_audit_cli_options }}
