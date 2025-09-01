@@ -9,7 +9,7 @@ on:
         required: false
 
       # FIXME RENAME: npm_audit_cli_options
-      npm_audit_cli_arguments:
+      npm_audit_cli_options:
         type: string
         description: CLI arguments to pass to the action
         required: false
@@ -32,4 +32,4 @@ jobs:
     uses: percebus/github-actions-npm/.github/workflows/audit.yml@main
     with:
       ssh-private-key: ${{ inputs.ssh-private-key }}
-      cli_arguments: ${{ inputs.npm_audit_cli_arguments }}
+      npm_audit_cli_options: ${{ inputs.npm_audit_cli_options }}
