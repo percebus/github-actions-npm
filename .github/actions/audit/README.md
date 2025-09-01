@@ -1,5 +1,7 @@
 # (npm) audit
 
+[![npm audit](https://github.com/percebus/github-actions-npm/actions/workflows/audit.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/audit.yml)
+
 [`LICENSE`](./LICENSE)
 
 `$> npm audit --omit=dev`
