@@ -17,5 +17,5 @@ runs:
   steps:
     - name: npm audit
       shell: bash
-      run: npm audit ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }}
+      run: npm audit --prefix ${{ inputs.working-directory }} ${{ inputs.npm_audit_cli_options }}
       continue-on-error: true
