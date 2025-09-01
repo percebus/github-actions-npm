@@ -1,0 +1,21 @@
+name: npm audit
+description: npm audit
+
+inputs:
+  working-directory:
+    description: working-directory
+    required: false
+    default: "."
+
+  npm_audit_cli_arguments:
+    description: npm audit CLI arguments
+    required: false
+    default: "--omit=dev"
+
+runs:
+  using: composite
+  steps:
+    - name: npm audit
+      shell: bash
+      run: npm audit ${{ inputs.npm_audit_cli_arguments }} --prefix ${{ inputs.working-directory }}
+      continue-on-error: true
