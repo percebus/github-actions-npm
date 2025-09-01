@@ -45,7 +45,8 @@ jobs:
       - uses: percebus/github-actions-node/.github/actions/setup@main
       - uses: percebus/github-actions-npm/.github/actions/install@main
 
-      # TODO? Make re-usable action?
+      # - uses: percebus/github-actions-npm/.github/actions/audit@main  # TODO
+      # TODO XXX vvv
       - name: npm audit
         # run: npm audit ${{ inputs.cli_arguments }} # FIXME why doesn't this work?
         run: npm audit --omit=dev

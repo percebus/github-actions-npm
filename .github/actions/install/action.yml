@@ -6,6 +6,7 @@ inputs:
     required: false
     default: "."
 
+  # TODO? RENAME? ls_cli_options
   ls_options:
     description: ls options
     required: false
