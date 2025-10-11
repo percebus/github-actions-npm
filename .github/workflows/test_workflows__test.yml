@@ -21,6 +21,24 @@ jobs:
     name: default
     uses: ./.github/workflows/test.yml
 
+  #
+  node-version___matrix:
+    needs: default
+    strategy:
+      max-parallel: 6
+      fail-fast: false
+      matrix:
+        node-version:
+          - ""
+          - "lts/*"
+          - "latest"
+
+    name: "node @ '${{ matrix.node-version }}'"
+    uses: ./.github/workflows/test.yml
+    with:
+      node-version: ${{ matrix.node-version }}
+
+  #
   reporter__matrix:
     needs: default
     strategy:
@@ -31,11 +49,12 @@ jobs:
           - ""
           - jest-junit
 
-    name: "reporter: ${{ matrix.reporter }}"
+    name: "reporter: '${{ matrix.reporter }}'"
     uses: ./.github/workflows/test.yml
     with:
       reporter: ${{ matrix.reporter }}
 
+  #
   file_pattern__matrix:
     needs: default
     strategy:
@@ -43,15 +62,17 @@ jobs:
       fail-fast: false
       matrix:
         files_pattern:
+          - ""
           - junit.xml
           - junit*.xml
           - "*.xml"
 
-    name: "file_pattern: ${{ matrix.files_pattern }}"
+    name: "file_pattern: '${{ matrix.files_pattern }}'"
     uses: ./.github/workflows/test.yml
     with:
       files_pattern: ${{ matrix.files_pattern }}
 
+  #
   working-directory___matrix:
     needs: default
     strategy:
