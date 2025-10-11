@@ -22,7 +22,7 @@ jobs:
     uses: ./.github/workflows/test.yml
 
   #
-  node___matrix:
+  node-version___matrix:
     needs: default
     strategy:
       max-parallel: 6
@@ -33,7 +33,7 @@ jobs:
           - "lts/*"
           - "latest"
 
-    name: "prefix ${{ matrix.working-directory }} @ ${{ matrix.OS }}"
+    name: "node @ ${{ matrix.node-version }}"
     uses: ./.github/workflows/test.yml
     with:
       node-version: ${{ matrix.node-version }}
