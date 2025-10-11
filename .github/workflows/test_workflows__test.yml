@@ -33,7 +33,7 @@ jobs:
           - "lts/*"
           - "latest"
 
-    name: "node @ ${{ matrix.node-version }}"
+    name: "node @ '${{ matrix.node-version }}'"
     uses: ./.github/workflows/test.yml
     with:
       node-version: ${{ matrix.node-version }}
@@ -49,7 +49,7 @@ jobs:
           - ""
           - jest-junit
 
-    name: "reporter: ${{ matrix.reporter }}"
+    name: "reporter: '${{ matrix.reporter }}'"
     uses: ./.github/workflows/test.yml
     with:
       reporter: ${{ matrix.reporter }}
@@ -62,11 +62,12 @@ jobs:
       fail-fast: false
       matrix:
         files_pattern:
+          - ""
           - junit.xml
           - junit*.xml
           - "*.xml"
 
-    name: "file_pattern: ${{ matrix.files_pattern }}"
+    name: "file_pattern: '${{ matrix.files_pattern }}'"
     uses: ./.github/workflows/test.yml
     with:
       files_pattern: ${{ matrix.files_pattern }}
