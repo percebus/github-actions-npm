@@ -7,6 +7,12 @@ on:
         description: SSH private key
         required: false
 
+      node-version:
+        type: string
+        description: The Node.js version to use.
+        required: false
+        default: "lts/*"
+
       working-directory:
         type: string
         description: working-directory
@@ -24,7 +30,7 @@ on:
         type: string
         description: The test reporter to use.
         required: false
-        default: ""
+        default: "" # 'jest-junit'
 
       tests_name:
         type: string
@@ -112,6 +118,9 @@ jobs:
           ssh-private-key: ${{ inputs.ssh-private-key }}
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
+        with:
+          node-version: ${{ inputs.node }}
+
       - uses: percebus/github-actions-npm/.github/actions/install@main
         with:
           working-directory: ${{ inputs.working-directory }}

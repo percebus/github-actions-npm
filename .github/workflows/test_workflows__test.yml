@@ -21,6 +21,24 @@ jobs:
     name: default
     uses: ./.github/workflows/test.yml
 
+  #
+  node___matrix:
+    needs: default
+    strategy:
+      max-parallel: 6
+      fail-fast: false
+      matrix:
+        node-version:
+          - ""
+          - "lts/*"
+          - "latest"
+
+    name: "prefix ${{ matrix.working-directory }} @ ${{ matrix.OS }}"
+    uses: ./.github/workflows/test.yml
+    with:
+      node-version: ${{ matrix.node-version }}
+
+  #
   reporter__matrix:
     needs: default
     strategy:
@@ -36,6 +54,7 @@ jobs:
     with:
       reporter: ${{ matrix.reporter }}
 
+  #
   file_pattern__matrix:
     needs: default
     strategy:
@@ -52,6 +71,7 @@ jobs:
     with:
       files_pattern: ${{ matrix.files_pattern }}
 
+  #
   working-directory___matrix:
     needs: default
     strategy:
