@@ -119,7 +119,7 @@ jobs:
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
         with:
-          node-version: ${{ inputs.node }}
+          node-version: ${{ inputs.node-version }}
 
       - uses: percebus/github-actions-npm/.github/actions/install@main
         with:
