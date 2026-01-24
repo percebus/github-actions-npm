@@ -15,6 +15,7 @@ permissions:
 
 jobs:
   audit:
+    name: Audit
     uses: ./.github/workflows/dependency-review.yml
     permissions:
       contents: read
