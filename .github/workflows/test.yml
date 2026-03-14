@@ -108,10 +108,6 @@ on:
 #   checks: write
 #   pull-requests: write
 
-env:
-  # XXX: Temporary workaround to force JavaScript actions to use Node 24.
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   npm_test:
     name: npm test

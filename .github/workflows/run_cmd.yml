@@ -30,10 +30,6 @@ on:
 # permissions:
 #   contents: read
 
-env:
-  # XXX: Temporary workaround to force JavaScript actions to use Node 24.
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   run_cmd:
     name: ${{ inputs.cmd }}
