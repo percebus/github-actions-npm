@@ -36,6 +36,6 @@ jobs:
           - javascript
 
     uses: percebus/github-actions-compliance/.github/workflows/codeql_analyze.yml@main
-    name: CodeQL
+    name: CodeQL analyze
     with:
       language: ${{ matrix.language }}
