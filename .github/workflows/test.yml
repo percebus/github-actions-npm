@@ -110,7 +110,7 @@ on:
 
 jobs:
   npm_test:
-    name: npm test
+    name: test
     runs-on: ${{ inputs.runs-on }}
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
