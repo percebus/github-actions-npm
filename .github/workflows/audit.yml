@@ -48,6 +48,9 @@ jobs:
   npm_audit:
     name: audit
     runs-on: ubuntu-latest
+    env:
+      # XXX: Temporary workaround to force JavaScript actions to use Node 24.
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
         with:
