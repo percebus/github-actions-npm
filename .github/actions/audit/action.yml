@@ -12,10 +12,16 @@ inputs:
     required: false
     default: "--omit=dev"
 
+  continue-on-error:
+    description: continue on error
+    required: false
+    # default: "false" # TODO
+    default: "true" # XXX
+
 runs:
   using: composite
   steps:
     - name: npm audit
       shell: bash
       run: npm audit --prefix ${{ inputs.working-directory }} ${{ inputs.npm_audit_cli_options }}
-      continue-on-error: true
+      continue-on-error: ${{ inputs.continue-on-error == 'true'}}

@@ -2,6 +2,11 @@ name: Dependencies Review & Audit
 
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+    secrets:
+      ssh-private-key:
+        description: SSH private key
+        required: false
+
     inputs:
       ssh-private-key:
         type: string
@@ -14,23 +19,16 @@ on:
         required: false
         default: .
 
-      npm_audit_cli_options:
-        type: string
-        description: CLI options to pass to the action
-        required: false
-        default: "--omit=dev"
-
-# NOTE: Set in final file
-# permissions:
-#   contents: read
-#   pull-requests: read
+permissions:
+  contents: read
+  pull-requests: read
 
 jobs:
   dependency-review:
     name: compliance
     uses: percebus/github-actions-compliance/.github/workflows/dependency-review.yml@main
     with:
-      ssh-private-key: ${{ inputs.ssh-private-key }}
+      ssh-private-key: ${{ secrets.ssh-private-key != "" && secrets.ssh-private-key || inputs.ssh-private-key }}
 
   # NOTE: is this job redundant?
   # does dependency-review-action accomplish the same, and more?
@@ -38,6 +36,5 @@ jobs:
     name: npm
     uses: percebus/github-actions-npm/.github/workflows/audit.yml@main
     with:
-      ssh-private-key: ${{ inputs.ssh-private-key }}
+      ssh-private-key: ${{ secrets.ssh-private-key != "" && secrets.ssh-private-key || inputs.ssh-private-key }}
       working-directory: ${{ inputs.working-directory }}
-      npm_audit_cli_options: ${{ inputs.npm_audit_cli_options }}
