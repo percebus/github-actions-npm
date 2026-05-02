@@ -1,0 +1,17 @@
+name: Test workflows/audit
+
+on:
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  audit:
+    name: npm
+    uses: ./.github/workflows/audit.yml
