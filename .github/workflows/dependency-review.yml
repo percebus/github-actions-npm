@@ -27,8 +27,8 @@ jobs:
   dependency-review:
     name: compliance
     uses: percebus/github-actions-compliance/.github/workflows/dependency-review.yml@main
-    secrets:
-      ssh-private-key: ${{ secrets.ssh-private-key }}
+    # secrets:
+    #   ssh-private-key: ${{ secrets.ssh-private-key }} # TODO
     with:
       ssh-private-key: ${{ inputs.ssh-private-key }} # XXX
 
