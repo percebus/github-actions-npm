@@ -3,7 +3,7 @@ name: npm audit
 on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
     inputs:
-      # FIXME move to secrets
+      # XXX
       ssh-private-key:
         type: string
         description: SSH private key
@@ -15,12 +15,6 @@ on:
         required: false
         default: .
 
-      npm_audit_cli_options:
-        type: string
-        description: npm audit CLI options
-        required: false
-        default: "--omit=dev"
-
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     secrets:
       ssh-private-key:
@@ -28,7 +22,7 @@ on:
         required: false
 
     inputs:
-      # FIXME move to secrets
+      # XXX
       ssh-private-key:
         type: string
         description: SSH private key
