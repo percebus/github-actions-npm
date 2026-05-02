@@ -21,12 +21,14 @@ on:
 
 permissions:
   contents: read
-  pull-requests: read
 
 jobs:
   dependency-review:
     name: compliance
     uses: percebus/github-actions-compliance/.github/workflows/dependency-review.yml@main
+    permissions:
+      contents: read
+      pull-requests: read
     # secrets:
     #   ssh-private-key: ${{ secrets.ssh-private-key }} # TODO
     with:
