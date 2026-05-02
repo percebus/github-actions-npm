@@ -1,6 +1,7 @@
 # github-actions-npm
 
-[![[C]ontinuous [I]ntegration](https://github.com/percebus/github-actions-npm/actions/workflows/always.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/always.yml) [![Pull Request](https://github.com/percebus/github-actions-npm/actions/workflows/pull_request.yml/badge.svg?event=pull_request)](https://github.com/percebus/github-actions-npm/actions/workflows/pull_request.yml)
+[![[C]ontinuous [I]ntegration](https://github.com/percebus/github-actions-npm/actions/workflows/always.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/always.yml)
+[![Pull Request](https://github.com/percebus/github-actions-npm/actions/workflows/pull_request.yml/badge.svg?event=pull_request)](https://github.com/percebus/github-actions-npm/actions/workflows/pull_request.yml)
 
 [`LICENSE`](./LICENSE)
 
@@ -17,7 +18,7 @@
 
 | workflow                                                         | tests                                                                                                                                                                                                                                      |
 | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [`audit`](./.github/workflows/audit.yml)                         | [![Pull Request](https://github.com/percebus/github-actions-npm/actions/workflows/pull_request.yml/badge.svg?event=pull_request)](https://github.com/percebus/github-actions-npm/actions/workflows/pull_request.yml)                       |
+| [`audit`](./.github/workflows/audit.yml)                         | [![Test workflows/audit](https://github.com/percebus/github-actions-npm/actions/workflows/test_workflows__audit.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/test_workflows__audit.yml)                |
 | [`dependency-review`](./.github/workflows/dependency-review.yml) | [![Pull Request](https://github.com/percebus/github-actions-npm/actions/workflows/pull_request.yml/badge.svg?event=pull_request)](https://github.com/percebus/github-actions-npm/actions/workflows/pull_request.yml)                       |
 | [`run`\_cmd](./.github/workflows/run_cmd.yml)                    | [![Test workflows/run_cmd](https://github.com/percebus/github-actions-npm/actions/workflows/test_workflows__run_cmd.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/test_workflows__run_cmd.yml)          |
 | [`run`\_script](./.github/workflows/run_script.yml)              | [![Test workflows/run_script](https://github.com/percebus/github-actions-npm/actions/workflows/test_workflows__run_script.yml/badge.svg)](https://github.com/percebus/github-actions-npm/actions/workflows/test_workflows__run_script.yml) |
