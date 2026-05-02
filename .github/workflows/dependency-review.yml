@@ -27,14 +27,18 @@ jobs:
   dependency-review:
     name: compliance
     uses: percebus/github-actions-compliance/.github/workflows/dependency-review.yml@main
+    # secrets:
+    #   ssh-private-key: ${{ secrets.ssh-private-key }} # TODO
     with:
-      ssh-private-key: ${{ secrets.ssh-private-key != "" && secrets.ssh-private-key || inputs.ssh-private-key }}
+      ssh-private-key: ${{ inputs.ssh-private-key }} # XXX
 
   # NOTE: is this job redundant?
   # does dependency-review-action accomplish the same, and more?
   audit:
     name: npm
     uses: percebus/github-actions-npm/.github/workflows/audit.yml@main
+    # secrets:
+    #   ssh-private-key: ${{ secrets.ssh-private-key }} # TODO
     with:
-      ssh-private-key: ${{ secrets.ssh-private-key != "" && secrets.ssh-private-key || inputs.ssh-private-key }}
+      ssh-private-key: ${{ inputs.ssh-private-key }} # XXX
       working-directory: ${{ inputs.working-directory }}
