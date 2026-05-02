@@ -3,6 +3,7 @@ name: npm audit
 on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
     inputs:
+      # XXX
       ssh-private-key:
         type: string
         description: SSH private key
@@ -13,15 +14,15 @@ on:
         description: Working directory
         required: false
         default: .
-
-      npm_audit_cli_options:
-        type: string
-        description: npm audit CLI options
-        required: false
-        default: "--omit=dev"
 
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+    secrets:
+      ssh-private-key:
+        description: SSH private key
+        required: false
+
     inputs:
+      # XXX
       ssh-private-key:
         type: string
         description: SSH private key
@@ -33,16 +34,8 @@ on:
         required: false
         default: .
 
-      npm_audit_cli_options:
-        type: string
-        description: CLI arguments to pass to the action
-        required: false
-        default: "--omit=dev"
-
-# NOTE: Set in final file
-# permissions:
-#   contents: read
-#   pull-requests: read
+permissions:
+  contents: read
 
 jobs:
   npm_audit:
@@ -51,11 +44,16 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
         with:
-          ssh-private-key: ${{ inputs.ssh-private-key }}
+          ssh-private-key: ${{ secrets.ssh-private-key || inputs.ssh-private-key }}
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
       - uses: percebus/github-actions-npm/.github/actions/install@main
-      - uses: percebus/github-actions-npm/.github/actions/audit@main
-        with:
-          working-directory: ${{ inputs.working-directory }}
-          npm_audit_cli_options: ${{ inputs.npm_audit_cli_options }}
+
+      - run: npm audit --prefix ${{ inputs.working-directory }} --omit=dev
+        name: npm audit --omit=dev
+
+      # NOTE: continue-on-error is set to true to avoid failing the entire workflow if vulnerabilities are found on devDependencies.
+      # This allows us to report vulnerabilities without blocking the workflow, which can be useful for monitoring and addressing issues over time.
+      - run: npm audit --prefix ${{ inputs.working-directory }}
+        name: npm audit
+        continue-on-error: true
