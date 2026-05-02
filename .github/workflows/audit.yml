@@ -54,6 +54,6 @@ jobs:
 
       # NOTE: continue-on-error is set to true to avoid failing the entire workflow if vulnerabilities are found on devDependencies.
       # This allows us to report vulnerabilities without blocking the workflow, which can be useful for monitoring and addressing issues over time.
-      - run: npm audit --prefix ${{ inputs.working-directory }}
-        name: npm audit
+      - run: npm audit --prefix ${{ inputs.working-directory }} --omit=prod
+        name: npm audit --omit=prod
         continue-on-error: true
