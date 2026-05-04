@@ -18,9 +18,13 @@ jobs:
   default:
     name: default
     uses: ./.github/workflows/run_cmd.yml
+    permissions:
+      contents: read
 
   cmd__matrix:
     needs: default
+    permissions:
+      contents: read
     strategy:
       max-parallel: 6
       fail-fast: false
@@ -38,6 +42,8 @@ jobs:
 
   working-directory__matrix:
     needs: default
+    permissions:
+      contents: read
     strategy:
       max-parallel: 6
       fail-fast: false

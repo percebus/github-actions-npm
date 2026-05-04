@@ -18,6 +18,8 @@ jobs:
   default:
     name: default
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/setup@main
@@ -25,6 +27,8 @@ jobs:
 
   ls_options__matrix:
     needs: default
+    permissions:
+      contents: read
     strategy:
       max-parallel: 6
       fail-fast: false
@@ -51,6 +55,8 @@ jobs:
 
   working-directory__matrix:
     needs: default
+    permissions:
+      contents: read
     strategy:
       max-parallel: 6
       fail-fast: false

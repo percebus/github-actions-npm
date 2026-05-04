@@ -18,9 +18,13 @@ jobs:
   default:
     name: default
     uses: ./.github/workflows/run_script.yml
+    permissions:
+      contents: read
 
   script__matrix:
     needs: default
+    permissions:
+      contents: read
     strategy:
       max-parallel: 6
       fail-fast: false
@@ -36,6 +40,8 @@ jobs:
 
   working-directory__matrix:
     needs: default
+    permissions:
+      contents: read
     strategy:
       max-parallel: 6
       fail-fast: false

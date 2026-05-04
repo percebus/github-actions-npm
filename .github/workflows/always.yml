@@ -18,6 +18,8 @@ jobs:
   lint:
     name: npm
     uses: ./.github/workflows/run_script.yml
+    permissions:
+      contents: read
     with:
       script: lint
 

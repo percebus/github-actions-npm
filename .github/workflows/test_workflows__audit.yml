@@ -9,9 +9,11 @@ on:
 
 permissions:
   contents: read
-  pull-requests: read
 
 jobs:
   audit:
     name: npm
     uses: ./.github/workflows/audit.yml
+    permissions:
+      contents: read
+      pull-requests: read

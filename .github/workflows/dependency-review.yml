@@ -45,6 +45,8 @@ jobs:
   audit:
     name: npm
     uses: percebus/github-actions-npm/.github/workflows/audit.yml@main
+    permissions:
+      contents: read
     secrets:
       ssh-private-key: ${{ secrets.ssh-private-key }}
     with:

@@ -33,6 +33,8 @@ jobs:
   run_cmd:
     name: ${{ inputs.cmd }}
     runs-on: ${{ inputs.runs-on }}
+    permissions:
+      contents: read
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
         with:

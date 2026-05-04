@@ -53,6 +53,8 @@ jobs:
   npm_audit:
     name: audit
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
         with:
