@@ -19,6 +19,12 @@ on:
         required: false
         default: .
 
+      continue-on-error:
+        type: boolean
+        description: continue on error
+        required: false
+        default: true
+
 permissions:
   contents: read
 
@@ -39,8 +45,11 @@ jobs:
   audit:
     name: npm
     uses: percebus/github-actions-npm/.github/workflows/audit.yml@main
+    permissions:
+      contents: read
     secrets:
       ssh-private-key: ${{ secrets.ssh-private-key }}
     with:
       ssh-private-key: ${{ inputs.ssh-private-key }} # XXX
       working-directory: ${{ inputs.working-directory }}
+      # continue-on-error: ${{ inputs.continue-on-error }}  # TODO

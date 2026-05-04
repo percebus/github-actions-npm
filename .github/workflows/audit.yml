@@ -15,6 +15,12 @@ on:
         required: false
         default: .
 
+      continue-on-error:
+        type: boolean
+        description: continue on error
+        required: false
+        default: true
+
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     secrets:
       ssh-private-key:
@@ -34,6 +40,12 @@ on:
         required: false
         default: .
 
+      continue-on-error:
+        type: boolean
+        description: continue on error
+        required: false
+        default: true
+
 permissions:
   contents: read
 
@@ -41,6 +53,8 @@ jobs:
   npm_audit:
     name: audit
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
         with:
@@ -49,11 +63,7 @@ jobs:
       - uses: percebus/github-actions-node/.github/actions/setup@main
       - uses: percebus/github-actions-npm/.github/actions/install@main
 
-      - run: npm audit --prefix ${{ inputs.working-directory }} --omit=dev
-        name: npm audit --omit=dev
-
-      # NOTE: continue-on-error is set to true to avoid failing the entire workflow if vulnerabilities are found on devDependencies.
-      # This allows us to report vulnerabilities without blocking the workflow, which can be useful for monitoring and addressing issues over time.
-      - run: npm audit --prefix ${{ inputs.working-directory }} --omit=prod
-        name: npm audit --omit=prod
-        continue-on-error: true
+      - uses: percebus/github-actions-npm/.github/actions/audit@main
+        with:
+          working-directory: ${{ inputs.working-directory }}
+          continue-on-error: ${{ inputs.continue-on-error }}
