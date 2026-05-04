@@ -50,4 +50,4 @@ jobs:
     with:
       ssh-private-key: ${{ inputs.ssh-private-key }} # XXX
       working-directory: ${{ inputs.working-directory }}
-      continue-on-error: ${{ inputs.continue-on-error }}
+      # continue-on-error: ${{ inputs.continue-on-error }}  # TODO
