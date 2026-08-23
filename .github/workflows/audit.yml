@@ -64,7 +64,7 @@ jobs:
       - uses: percebus/github-actions-npm/.github/actions/install@main
 
       - uses: percebus/github-actions-npm/.github/actions/audit@main
-        continue-on-error: ${{ inputs.continue-on-error }}
+        continue-on-error: false
         with:
           working-directory: ${{ inputs.working-directory }}
-          continue-on-error: false
+          continue-on-error: ${{ inputs.continue-on-error == 'true' }}
