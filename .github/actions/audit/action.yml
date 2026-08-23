@@ -17,6 +17,8 @@ inputs:
     required: false
     default: high
 
+  # TODO: RE-THINK XXX?
+  # The echo "::warning" suppresses exit 1. Making this completely useless.
   continue-on-error:
     description: continue on error
     required: false
