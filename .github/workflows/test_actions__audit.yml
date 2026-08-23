@@ -28,6 +28,7 @@ jobs:
   #
   working-directory__matrix:
     needs: default
+    runs-on: ubuntu-latest
     permissions:
       contents: read
     strategy:
@@ -37,7 +38,6 @@ jobs:
         working-directory:
           - sub-package
 
-    runs-on: ubuntu-latest
     name: "prefix ${{ matrix.working-directory }}"
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
