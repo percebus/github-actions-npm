@@ -17,12 +17,10 @@ inputs:
     required: false
     default: high
 
-  # TODO: RE-THINK XXX?
-  # The echo "::warning" suppresses exit 1. Making this completely useless.
   continue-on-error:
     description: continue on error
     required: false
-    default: "true"
+    default: "false"
 
 runs:
   using: composite
@@ -30,10 +28,13 @@ runs:
     - name: npm audit
       shell: bash
       run: npm audit ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }} --omit="dev" --audit-level ${{ inputs.audit-level }}
+      continue-on-error: ${{ inputs.continue-on-error == 'true'}}
 
     # NOTE: continue-on-error is set to true to avoid failing the entire workflow if vulnerabilities are found on devDependencies.
     # This allows us to report vulnerabilities without blocking the workflow, which can be useful for monitoring and addressing issues over time.
     - name: npm audit
       shell: bash
       run: npm audit ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }} || echo "::warning::npm audit found vulnerabilities!"
-      continue-on-error: ${{ inputs.continue-on-error == 'true'}}
+      
+      # XXX? redundant? echo "::warning" supresses exit 1
+      continue-on-error: true
