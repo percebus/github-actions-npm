@@ -47,7 +47,7 @@ on:
         type: boolean
         description: continue on error
         required: false
-        default: true
+        default: false
 
 permissions:
   contents: read
