@@ -40,14 +40,11 @@ on:
         required: false
         default: .
 
-      # XXX? misleading. Does this mean ANY error?
-      # include=prod + severity=high or greater should fail
-      # everything else should not
       continue-on-error:
         type: boolean
         description: continue on error
         required: false
-        default: false
+        default: true
 
 permissions:
   contents: read
