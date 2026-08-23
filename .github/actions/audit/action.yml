@@ -35,6 +35,6 @@ runs:
     - name: npm audit
       shell: bash
       run: npm audit ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }} || echo "::warning::npm audit found vulnerabilities!"
-      
+
       # XXX? redundant? echo "::warning" supresses exit 1
       continue-on-error: true
