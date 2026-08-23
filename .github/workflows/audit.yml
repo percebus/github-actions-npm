@@ -40,6 +40,9 @@ on:
         required: false
         default: .
 
+      # XXX? misleading. Does this mean ANY error?
+      # include=prod + severity=high or greater should fail
+      # everything else should not
       continue-on-error:
         type: boolean
         description: continue on error
@@ -64,7 +67,7 @@ jobs:
       - uses: percebus/github-actions-npm/.github/actions/install@main
 
       - uses: percebus/github-actions-npm/.github/actions/audit@main
-        continue-on-error: false
+        continue-on-error: ${{ inputs.continue-on-error }}
         with:
           working-directory: ${{ inputs.working-directory }}
-          continue-on-error: ${{ inputs.continue-on-error == true && 'true' || 'false' }}
+          continue-on-error: 'true'
