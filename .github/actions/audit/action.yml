@@ -11,7 +11,7 @@ inputs:
     description: npm audit CLI options
     required: false
     default: "--package-lock-only"
-  
+
   audit-level:
     description: The minimum level of vulnerability for `npm audit` to exit with
     required: false
