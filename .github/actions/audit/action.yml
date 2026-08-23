@@ -8,9 +8,9 @@ inputs:
     default: "."
 
   npm_audit_cli_options:
-    description: "Must be one or more of: dev, optional, peer"
+    description: npm audit CLI options
     required: false
-    default: "--omit=dev"
+    default: ""
 
   continue-on-error:
     description: continue on error
@@ -22,7 +22,7 @@ runs:
   steps:
     - name: npm audit
       shell: bash
-      run: npm audit ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }}
+      run: npm audit ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }} --omit="dev"
 
     # NOTE: continue-on-error is set to true to avoid failing the entire workflow if vulnerabilities are found on devDependencies.
     # This allows us to report vulnerabilities without blocking the workflow, which can be useful for monitoring and addressing issues over time.
