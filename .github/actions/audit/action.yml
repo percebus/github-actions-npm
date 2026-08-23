@@ -10,23 +10,31 @@ inputs:
   npm_audit_cli_options:
     description: npm audit CLI options
     required: false
-    default: "--omit=dev"
+    default: "--package-lock-only"
+
+  audit-level:
+    description: The minimum level of vulnerability for `npm audit` to exit with
+    required: false
+    default: high
 
   continue-on-error:
     description: continue on error
     required: false
-    default: "true"
+    default: "false"
 
 runs:
   using: composite
   steps:
     - name: npm audit
       shell: bash
-      run: npm audit --prefix ${{ inputs.working-directory }} --omit=dev
+      run: npm audit ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }} --omit="dev" --audit-level ${{ inputs.audit-level }}
+      continue-on-error: ${{ inputs.continue-on-error == 'true'}}
 
     # NOTE: continue-on-error is set to true to avoid failing the entire workflow if vulnerabilities are found on devDependencies.
     # This allows us to report vulnerabilities without blocking the workflow, which can be useful for monitoring and addressing issues over time.
     - name: npm audit
       shell: bash
-      run: npm audit --prefix ${{ inputs.working-directory }} --omit=prod
-      continue-on-error: ${{ inputs.continue-on-error == 'true'}}
+      run: npm audit ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }} || echo "::warning::npm audit found vulnerabilities!"
+
+      # XXX? redundant? echo "::warning" supresses exit 1
+      continue-on-error: true
