@@ -41,6 +41,9 @@ jobs:
           ssh-private-key: ${{ inputs.ssh-private-key }}
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
+
+      # TODO? add audit?
+
       - uses: percebus/github-actions-npm/.github/actions/install@main
         with:
           working-directory: ${{ inputs.working-directory }}
