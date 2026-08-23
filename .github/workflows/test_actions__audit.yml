@@ -37,7 +37,7 @@ jobs:
         working-directory:
           - sub-package
 
-    runs-on: ${{ matrix.OS }}
+    runs-on: ubuntu-latest
     name: "prefix ${{ matrix.working-directory }}"
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
