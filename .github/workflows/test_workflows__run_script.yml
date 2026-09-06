@@ -62,3 +62,4 @@ jobs:
       script: echo
       runs-on: ${{ matrix.OS }}
       working-directory: ${{ matrix.working-directory }}
+      npm_audit: true
