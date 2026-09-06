@@ -52,26 +52,6 @@ jobs:
           - .
           - node/sub-package
 
-    name: "prefix ${{ matrix.working-directory }}"
-    uses: ./.github/workflows/run_cmd.yml
-    with:
-      cmd: pwd
-      runs-on: ubuntu-latest
-      working-directory: ${{ matrix.working-directory }}
-      npm_audit: true
-
-  OS__matrix:
-    needs: default
-    permissions:
-      contents: read
-    strategy:
-      max-parallel: 6
-      fail-fast: false
-      matrix:
-        working-directory:
-          - .
-          - node/sub-package
-
         OS:
           - ubuntu-latest
           - windows-latest
