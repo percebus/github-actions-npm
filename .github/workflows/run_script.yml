@@ -31,7 +31,7 @@ on:
         type: string
         required: false
         default: "--package-lock-only"
-      
+
       npm_audit_continue-on-error:
         description: continue-on-error
         type: boolean
