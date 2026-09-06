@@ -63,3 +63,4 @@ jobs:
       cmd: pwd
       runs-on: ${{ matrix.OS }}
       working-directory: ${{ matrix.working-directory }}
+      npm_audit: true

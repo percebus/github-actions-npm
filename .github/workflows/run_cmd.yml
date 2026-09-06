@@ -20,6 +20,24 @@ on:
         required: false
         default: "."
 
+      npm_audit:
+        description: Run npm audit
+        type: boolean
+        required: false
+        default: false
+
+      npm_audit_cli_options:
+        description: npm audit CLI options
+        type: string
+        required: false
+        default: "--package-lock-only"
+      
+      npm_audit_continue-on-error:
+        description: continue-on-error
+        type: boolean
+        required: false
+        default: true
+
       cmd:
         type: string
         description: The bash command to run.
@@ -42,7 +60,10 @@ jobs:
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
 
-      # TODO? add audit?
+      - name: npm audit
+        if: ${{ inputs.npm_audit }}
+        run: npm audit ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }} || echo "::warning::npm audit found vulnerabilities!"
+        continue-on-error: ${{ inputs.npm_audit_continue-on-error }}
 
       - uses: percebus/github-actions-npm/.github/actions/install@main
         with:
