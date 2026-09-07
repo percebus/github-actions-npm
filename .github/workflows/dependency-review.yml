@@ -8,6 +8,7 @@ on:
         required: false
 
     inputs:
+      # XXX when all references have been fixed
       ssh-private-key:
         type: string
         description: SSH private key
@@ -30,15 +31,13 @@ permissions:
 
 jobs:
   dependency-review:
-    name: compliance
+    name: github-actions-compliance
     uses: percebus/github-actions-compliance/.github/workflows/dependency-review.yml@main
     permissions:
       contents: read
       pull-requests: read
-    # secrets:
-    #   ssh-private-key: ${{ secrets.ssh-private-key }} # TODO
-    with:
-      ssh-private-key: ${{ inputs.ssh-private-key }} # XXX
+    secrets:
+      ssh-private-key: ${{ secrets.ssh-private-key || inputs.ssh-private-key }}
 
   # NOTE: is this job redundant?
   # does dependency-review-action accomplish the same, and more?
@@ -48,8 +47,7 @@ jobs:
     permissions:
       contents: read
     secrets:
-      ssh-private-key: ${{ secrets.ssh-private-key }}
+      ssh-private-key: ${{ secrets.ssh-private-key || inputs.ssh-private-key }}
     with:
-      ssh-private-key: ${{ inputs.ssh-private-key }} # XXX
       working-directory: ${{ inputs.working-directory }}
       continue-on-error: ${{ inputs.continue-on-error }}

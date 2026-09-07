@@ -100,4 +100,5 @@ jobs:
     with:
       # windows complains about EoL characters in the script
       runs-on: ${{ matrix.OS }}
+      npm_audit: true
       working-directory: ${{ matrix.working-directory }}

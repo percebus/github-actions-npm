@@ -18,6 +18,7 @@ runs:
   steps:
     - name: ls
       shell: bash
+      if: ${{ inputs.working-directory != '.' }}
       run: ls ${{ inputs.ls_options }} ${{ inputs.working-directory }}
 
     - name: npm run setup:ci

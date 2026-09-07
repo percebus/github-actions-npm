@@ -11,9 +11,21 @@ permissions:
   contents: read
 
 jobs:
-  audit:
-    name: npm
+  default:
+    name: default
     uses: ./.github/workflows/audit.yml
-    permissions:
-      contents: read
-      pull-requests: read
+
+  #
+  working-directory__matrix:
+    needs: default
+    strategy:
+      max-parallel: 6
+      fail-fast: false
+      matrix:
+        working-directory:
+          - sub-package
+
+    name: "prefix ${{ matrix.working-directory }}"
+    uses: ./.github/workflows/audit.yml
+    with:
+      working-directory: node/${{ matrix.working-directory }}
