@@ -31,7 +31,7 @@ permissions:
 
 jobs:
   dependency-review:
-    name: compliance
+    name: github-actions-compliance
     uses: percebus/github-actions-compliance/.github/workflows/dependency-review.yml@main
     permissions:
       contents: read
