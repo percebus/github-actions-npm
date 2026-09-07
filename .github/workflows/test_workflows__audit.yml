@@ -22,8 +22,6 @@ jobs:
   working-directory__matrix:
     needs: default
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     strategy:
       max-parallel: 6
       fail-fast: false
