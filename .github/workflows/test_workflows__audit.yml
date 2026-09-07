@@ -13,9 +13,6 @@ permissions:
 jobs:
   default:
     name: default
-    permissions:
-      contents: read
-      pull-requests: read
     uses: ./.github/workflows/audit.yml
 
   #
@@ -30,9 +27,6 @@ jobs:
           - sub-package
 
     name: "prefix ${{ matrix.working-directory }}"
-    permissions:
-      contents: read
-      pull-requests: read
     uses: ./.github/workflows/audit.yml
     with:
       working-directory: node/${{ matrix.working-directory }}
