@@ -3,7 +3,7 @@ name: npm audit
 on:
   workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
     inputs:
-      # XXX
+      # XXX when all references have been fixed
       ssh-private-key:
         type: string
         description: SSH private key
@@ -28,7 +28,7 @@ on:
         required: false
 
     inputs:
-      # XXX
+      # XXX when all references have been fixed
       ssh-private-key:
         type: string
         description: SSH private key
@@ -61,8 +61,6 @@ jobs:
           ssh-private-key: ${{ secrets.ssh-private-key || inputs.ssh-private-key }}
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
-
-      # - uses: percebus/github-actions-npm/.github/actions/install@main # XXX Not needed
 
       - uses: percebus/github-actions-npm/.github/actions/audit@main
         continue-on-error: ${{ inputs.continue-on-error }}

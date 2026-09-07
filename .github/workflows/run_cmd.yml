@@ -2,6 +2,11 @@ name: cmd run
 
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
+    secrets:
+      ssh-private-key:
+        description: ssh-private-key
+        required: false
+
     inputs:
       runs-on:
         type: string
@@ -9,6 +14,7 @@ on:
         required: false
         default: ubuntu-latest
 
+      # XXX when all references have been fixed
       ssh-private-key:
         type: string
         description: SSH private key
@@ -56,7 +62,7 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
         with:
-          ssh-private-key: ${{ inputs.ssh-private-key }}
+          ssh-private-key: ${{ secrets.ssh-private-key || inputs.ssh-private-key }}
 
       - uses: percebus/github-actions-node/.github/actions/setup@main
 
