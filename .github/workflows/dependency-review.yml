@@ -43,7 +43,7 @@ jobs:
   # does dependency-review-action accomplish the same, and more?
   audit:
     name: npm
-    uses: percebus/github-actions-npm/.github/workflows/audit.yml@main
+    uses: ./.github/workflows/audit.yml
     permissions:
       contents: read
     secrets:
