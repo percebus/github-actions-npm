@@ -1,0 +1,9 @@
+version: 2
+updates:
+  # Configuration for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/.github/"
+    schedule:
+      interval: "monthly" # Options: daily, weekly, monthly
+    cooldown:
+      default-days: 7
