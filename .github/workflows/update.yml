@@ -51,8 +51,8 @@ permissions:
   contents: read
 
 jobs:
-  npm_audit_fix:
-    name: audit fix
+  npm_update:
+    name: update
     runs-on: ubuntu-latest
     permissions:
       contents: write
