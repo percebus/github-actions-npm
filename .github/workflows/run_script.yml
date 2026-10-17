@@ -1,4 +1,4 @@
-name: npm run script
+name: "Re-usable: npm run {script}"
 
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows

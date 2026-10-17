@@ -1,4 +1,4 @@
-name: npm audit fix
+name: "Re-usable: npm audit fix"
 
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows

@@ -1,4 +1,5 @@
-name: npm test
+name: "Re-usable: npm test"
+
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     secrets:

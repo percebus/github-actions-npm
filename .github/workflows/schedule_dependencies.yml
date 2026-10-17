@@ -1,4 +1,4 @@
-name: npm audit fix
+name: "Cron: npm update dependencies"
 
 on:
   workflow_dispatch: # Allows you to trigger it manually from the Actions t
@@ -16,7 +16,7 @@ permissions:
 jobs:
   audit_fix:
     name: npm
-    uses: ./.github/workflows/audit_fix.yml
+    uses: ./.github/workflows/update.yml
     permissions:
       contents: write
       pull-requests: write
