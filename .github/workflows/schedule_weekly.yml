@@ -1,0 +1,22 @@
+name: Weekly
+
+on:
+  workflow_dispatch: # Allows you to trigger it manually from the Actions t
+  schedule:
+    # Runs every Sunday at 00:00 UTC
+    - cron: '0 0 * * 0'
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  audit_fix:
+    name: Audit
+    uses: ./.github/workflows/audit_fix.yml
+    permissions:
+      contents: write
+      pull-requests: write
