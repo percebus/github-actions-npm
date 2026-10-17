@@ -67,7 +67,7 @@ jobs:
 
       # TODO? pass more args?
       - name: npm update
-        run: npm update --save --package-lock-only --prefix ${{ inputs.working-directory }} 
+        run: npm update --save --package-lock-only --prefix ${{ inputs.working-directory }}
 
       # XXX? redundant? do vanilla 'npm audit' to take note of pending vulnerabilities?
       - name: npm audit fix
