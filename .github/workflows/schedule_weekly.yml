@@ -4,7 +4,7 @@ on:
   workflow_dispatch: # Allows you to trigger it manually from the Actions t
   schedule:
     # Runs every Sunday at 00:00 UTC
-    - cron: '0 0 * * 0'
+    - cron: "0 0 * * 0"
 
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   audit_fix:
-    name: Audit
+    name: audit fix
     uses: ./.github/workflows/audit_fix.yml
     permissions:
       contents: write
