@@ -66,7 +66,7 @@ jobs:
       - uses: percebus/github-actions-node/.github/actions/setup@main
 
       - name: npm update
-        run : npm update --prefix ${{ inputs.working-directory }} --save --package-lock-only
+        run: npm update --prefix ${{ inputs.working-directory }} --save --package-lock-only
 
       # XXX? redundant? do vanilla 'npm audit' to take note of pending vulnerabilities?
       - name: npm audit fix
