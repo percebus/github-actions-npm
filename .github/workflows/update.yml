@@ -68,7 +68,7 @@ jobs:
       - name: npm update
         run : npm update --prefix ${{ inputs.working-directory }} --save --package-lock-only
 
-      # XXX?
+      # XXX? redundant? do vanilla 'npm audit' to take note of pending vulnerabilities?
       - name: npm audit fix
         run: npm audit fix ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }} || echo "::warning::npm audit found vulnerabilities!"
         continue-on-error: true
