@@ -80,4 +80,5 @@ jobs:
           labels: |
             security
             dependencies
-            package*.json
+            package.json
+            package-lock.json
