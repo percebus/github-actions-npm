@@ -15,12 +15,12 @@ permissions:
   pull-requests: write
 
 jobs:
-  npm_update:
+  root:
     name: npm
     uses: ./.github/workflows/update.yml
 
-  npm_update:
-    name: npm --prefix=node/sub-packages
+  sub-pacjage:
+    name: npm --prefix=node/sub-package
     uses: ./.github/workflows/update.yml
     with:
-      working-directory: node/sub-packages
+      working-directory: node/sub-package
