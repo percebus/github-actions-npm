@@ -76,7 +76,7 @@ jobs:
 
       # TODO? move to -commons? create a -github?
       # SRC: https://github.com/peter-evans/create-pull-request/
-      - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v.8.1.1
+      - uses: peter-evans/create-pull-request@v8.1.1
         name: Create Pull Request
         with:
           branch: ${{ inputs.ref_name }}

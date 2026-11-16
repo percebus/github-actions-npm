@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: ./.github/actions/install
+      - uses: $/.github/actions/install
 
   ls_options__matrix:
     needs: default
@@ -49,7 +49,7 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: ./.github/actions/install
+      - uses: $/.github/actions/install
         with:
           ls_options: ${{ matrix.ls_options }}
 
@@ -80,7 +80,7 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: ./.github/actions/install
+      - uses: $/.github/actions/install
         with:
           ls_options: ""
           working-directory: ${{ matrix.working-directory }}

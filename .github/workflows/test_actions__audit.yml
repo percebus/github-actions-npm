@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: ./.github/actions/audit
+      - uses: $/.github/actions/audit
 
   #
   working-directory__matrix:
@@ -42,6 +42,6 @@ jobs:
     steps:
       - uses: percebus/github-actions-common/.github/actions/checkout@main
       - uses: percebus/github-actions-node/.github/actions/setup@main
-      - uses: ./.github/actions/audit
+      - uses: $/.github/actions/audit
         with:
           working-directory: node/${{ matrix.working-directory }}
