@@ -11,12 +11,16 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
 
 jobs:
   npm_update:
     name: npm
     uses: ./.github/workflows/update.yml
-    permissions:
-      contents: write
-      pull-requests: write
+
+  npm_update:
+    name: npm --prefix=node/sub-packages
+    uses: ./.github/workflows/update.yml
+    with:
+      working-directory: node/sub-packages

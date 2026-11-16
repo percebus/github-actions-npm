@@ -17,3 +17,13 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/node/sub-package/" # Location of package manifests
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
