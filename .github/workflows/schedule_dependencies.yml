@@ -18,9 +18,12 @@ jobs:
   root:
     name: npm
     uses: ./.github/workflows/update.yml
+    with:
+      ref_name: automation/npm_update/root
 
-  sub-pacjage:
+  sub-package:
     name: npm --prefix=node/sub-package
     uses: ./.github/workflows/update.yml
     with:
       working-directory: node/sub-package
+      ref_name: automation/npm_update/sub-package

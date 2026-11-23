@@ -24,19 +24,19 @@ on:
         description: peter-evans/create-pull-request branch
         type: string
         required: false
-        default: automation/npm-update
+        default: automation/npm_update
 
       commit-message:
         description: peter-evans/create-pull-request commit-message
         type: string
         required: false
-        default: "chore(deps): npm update"
+        default: "fix(deps): npm update"
 
       pull_request_title:
         description: peter-evans/create-pull-request title
         type: string
         required: false
-        default: "chore(deps): npm update"
+        default: "fix(deps): npm update"
 
       pull_request_body:
         description:
