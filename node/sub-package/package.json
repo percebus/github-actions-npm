@@ -19,6 +19,6 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "description": "",
   "devDependencies": {
-    "prettier": "^3.9.10"
+    "prettier": "^3.10.1"
   }
 }
