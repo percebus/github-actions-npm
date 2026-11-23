@@ -66,4 +66,4 @@ jobs:
         continue-on-error: ${{ inputs.continue-on-error }}
         with:
           working-directory: ${{ inputs.working-directory }}
-          continue-on-error: ${{ inputs.continue-on-error == 'true' }}
+          continue-on-error: ${{ inputs.continue-on-error && 'true' || 'false' }}
