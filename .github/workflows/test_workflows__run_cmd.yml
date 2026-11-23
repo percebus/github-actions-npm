@@ -19,6 +19,13 @@ jobs:
     name: default
     uses: ./.github/workflows/run_cmd.yml
 
+  with__npm_audit:
+    name: with npm audit
+    needs: default
+    uses: ./.github/workflows/run_cmd.yml
+    with:
+      npm_audit: true
+
   cmd__matrix:
     needs: default
     strategy:
