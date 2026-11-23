@@ -19,6 +19,13 @@ jobs:
     name: default
     uses: ./.github/workflows/run_script.yml
 
+  with__npm_audit:
+    name: with npm audit
+    needs: default
+    uses: ./.github/workflows/run_script.yml
+    with:
+      npm_audit: true
+
   script__matrix:
     needs: default
     strategy:
@@ -29,7 +36,7 @@ jobs:
           - test
           - lint
 
-    name: "script: ${{ matrix.script }}"
+    name: npm
     uses: ./.github/workflows/run_script.yml
     with:
       script: ${{ matrix.script }}
