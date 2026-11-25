@@ -30,7 +30,7 @@ on:
         description: Run npm audit
         type: boolean
         required: false
-        default: false
+        default: true
 
       npm_audit_cli_options:
         description: npm audit CLI options
@@ -42,7 +42,7 @@ on:
         description: continue-on-error
         type: boolean
         required: false
-        default: true
+        default: false
 
       cmd:
         type: string
