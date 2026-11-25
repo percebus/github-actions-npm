@@ -5,7 +5,7 @@ on:
     secrets:
       token:
         description: peter-evans/create-pull-request token
-        required: false 
+        required: false
 
       # XXX? use same token as above?
       ssh-private-key:
