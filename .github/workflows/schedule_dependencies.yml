@@ -18,12 +18,16 @@ jobs:
   root:
     name: npm
     uses: ./.github/workflows/update.yml
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
     with:
       ref_name: automation/npm_update/root
 
   sub-package:
     name: npm --prefix=node/sub-package
     uses: ./.github/workflows/update.yml
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
     with:
       working-directory: node/sub-package
       ref_name: automation/npm_update/sub-package
