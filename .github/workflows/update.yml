@@ -3,6 +3,11 @@ name: "Re-usable: npm update"
 on:
   workflow_call: # SRC: https://docs.github.com/en/actions/using-workflows/reusing-workflows
     secrets:
+      token:
+        description: peter-evans/create-pull-request token
+        required: false
+
+      # XXX? use same token as above?
       ssh-private-key:
         description: ssh-private-key
         required: false
@@ -79,6 +84,7 @@ jobs:
       - uses: peter-evans/create-pull-request@v8.1.1
         name: Create Pull Request
         with:
+          token: ${{ secrets.token || secrets.GITHUB_TOKEN }}
           branch: ${{ inputs.ref_name }}
           commit-message: ${{ inputs.commit-message }}
           title: ${{ inputs.pull_request_title }}
