@@ -29,7 +29,7 @@ runs:
       shell: bash
       run: npm audit ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }} || echo "::warning::npm audit found vulnerabilities!"
 
-    - name: npm audit
+    - name: npm audit --omit="dev" --audit-level ${{ inputs.audit-level }}
       shell: bash
       run: npm audit ${{ inputs.npm_audit_cli_options }} --prefix ${{ inputs.working-directory }} --omit="dev" --audit-level ${{ inputs.audit-level }}
       continue-on-error: ${{ inputs.continue-on-error == 'true'}}
