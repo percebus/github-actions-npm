@@ -44,9 +44,9 @@ dependencies:
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
-    'actions/setup-node@v3':
-        ref: 'v3'
-        commit: 'sha1-3235b876344d2a9aa001b8d1453c930bba69e610'
+    'actions/setup-node@v7':
+        ref: 'v7'
+        commit: 'sha1-949feb2413d6458794dcd2491c4babbbce0c15c1'
         owner_id: 44036562
         repo_id: 189476904
     'dorny/test-reporter@v2.5.0':
@@ -61,21 +61,21 @@ dependencies:
         repo_id: 290227969
     'percebus/github-actions-common@main':
         ref: 'main'
-        commit: 'sha1-0a4a51663e5d78ce6c6f9ed24f082c43ec987d16'
+        commit: 'sha1-f11aa2511fe564f0aab6d5b1d3138c71ede62786'
         owner_id: 5483088
         repo_id: 909365451
         uses:
             - 'actions/checkout@v7.0.1'
     'percebus/github-actions-node@main':
         ref: 'main'
-        commit: 'sha1-bea9f963ec584931c19433250c6273f47bbadffd'
+        commit: 'sha1-d0db80ec1c856ef6d7609c65f525bfc780f876d3'
         owner_id: 5483088
         repo_id: 909184502
         uses:
-            - 'actions/setup-node@v3'
+            - 'actions/setup-node@v7'
     'percebus/github-actions-npm@main':
         ref: 'main'
-        commit: 'sha1-123b8c9aab1fdb7012027328428f3bc66d175c2b'
+        commit: 'sha1-ed0e10aa88e5bf66f1696052c7c2a764c5c1e9ff'
         owner_id: 5483088
         repo_id: 909389358
     'percebus/github-actions-testing@main':
